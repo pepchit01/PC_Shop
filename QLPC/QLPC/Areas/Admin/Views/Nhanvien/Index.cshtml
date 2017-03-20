@@ -1,0 +1,78 @@
+﻿@model IEnumerable<QLPC.Models.DataModel.NHANVIEN>
+
+@{
+    ViewBag.Title = "Danh sách nhân viên";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h2 >Danh sách nhân viên</h2>
+    </div>
+
+ <a href="/Admin/Nhanvien/Create"><input class="btn btn-primary" type="button" value="Thêm mới nhân viên"/></a>
+ <table class="table table-responsive table-hover table-bordered table-condensed ">
+    <tr class="info">
+        <th class="">
+            @Html.DisplayNameFor(model => model.MANV)
+        </th>
+        <th class="col-md-2">
+            @Html.DisplayNameFor(model => model.TENNV)
+        </th>
+        <th class="col-md-1">
+            @Html.DisplayNameFor(model => model.DTHOAINV)
+        </th>
+        <th class="col-md-4">
+            @Html.DisplayNameFor(model => model.DCHINV)
+        </th>
+        <th class="col-md-1">
+            @Html.DisplayNameFor(model => model.GRANT)
+        </th>
+        <th class="col-md-2">
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </th>
+        <th class="col-md-2">Tùy chọn</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr class="active  ">
+        <td>
+            @Html.DisplayFor(modelItem => item.MANV)
+        </td>
+        <td >
+            @Html.DisplayFor(modelItem => item.TENNV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DTHOAINV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DCHINV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GRANT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EMAIL)
+        </td>
+        <td>
+            <div class="btn-group ">
+                @*<button type="button" data-toggle="tooltip" title="Cập nhật" onclick="location.href=' @Url.Action("Edit", "Nhanvien", new { id = item.MANV })'" class ="btn btn-primary"><p class="glyphicon glyphicon-edit"></p></button>
+                <button type="button" data-toggle="tooltip" title="Xem" onclick="location.href=' @Url.Action("Details", "Nhanvien", new { id = item.MANV })'" class="btn btn-primary"><p class="glyphicon glyphicon-list-alt"></p></button>
+                <button type="button" data-toggle="tooltip" title="Xóa" onclick="location.href=' @Url.Action("Delete", "Nhanvien", new { id = item.MANV })'" class="btn btn-primary"><p class="glyphicon glyphicon-remove-sign"></p></button>*@
+                @Html.ActionLink(" ", "Edit", new { id = item.MANV }, new { @class = "btn btn-primary glyphicon glyphicon-edit", data_toggle = "tooltip", title = "Cập nhật" }) 
+                @Html.ActionLink(" ", "Details", new { id = item.MANV }, new { @class = "btn btn-primary glyphicon glyphicon-list-alt", data_toggle = "tooltip", title = "Xem" }) 
+                @Html.ActionLink(" ", "Delete", new { id = item.MANV }, new {@class= "btn btn-primary glyphicon glyphicon-remove-sign disabled", data_toggle = "tooltip", title = "Xóa", @onclick = "return confirm('Nhân viên này sẽ được xóa khỏi danh dách! Bạn có muốn xóa?');" }) 
+            </div>
+        </td>
+    </tr>
+}
+
+</table>
+    <div class="box-footer">
+    </div>
+</div>
+
+<script>
+$(document).ready(function(){
+    $('[data_toggle="tooltip"]').tooltip();
+});
+</script>

@@ -1,0 +1,76 @@
+﻿@model QLPC.Models.DataModel.NHANVIEN
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3>Thông tin chi tiết nhân viên</h3>
+    </div>
+    <div class="col-md-offset-3 col-md-9">
+        <h3 style="margin-left:10px">Ông/Bà: @Model.TENNV</h3>
+        <img src="@Model.AVATAR" class="img-responsive img-thumbnail" width="100" height="100" style="margin-left:90px" /> 
+        <dl class="dl-horizontal">
+            <dt>
+                Mã nhân viên
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MANV)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.TENNV)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TENNV)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DTHOAINV)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DTHOAINV)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DCHINV)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DCHINV)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PASS)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PASS)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.GRANT)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.GRANT)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EMAIL)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EMAIL)
+            </dd>
+        </dl>
+    </div>
+    <div class="box-footer">
+        <button type="button" onclick="location.href=' @Url.Action("Edit", "Nhanvien", new { id = Model.MANV })'" class="btn btn-primary">Cập nhật</button>
+        <button type="button" onclick="location.href=' @Url.Action("Index", "Nhanvien", new { id = Model.MANV })'" class="btn btn-default">Trở về</button>
+    </div>
+</div>

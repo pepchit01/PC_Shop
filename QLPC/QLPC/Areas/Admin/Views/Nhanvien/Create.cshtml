@@ -1,0 +1,102 @@
+﻿@model QLPC.Models.DataModel.NHANVIEN
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+    @using (Html.BeginForm())
+    {
+        <div class="box box-primary">
+            <div class="box-header with-border"><h2>Thêm mới nhân viên</h2></div>
+            <br />
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TENNV, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.TENNV, new { htmlAttributes = new { @class = "form-control", placeholder = "Dưới 50 kí tự" } })
+                        @Html.ValidationMessageFor(model => model.TENNV, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DTHOAINV, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.DTHOAINV, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DTHOAINV, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DCHINV, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.DCHINV, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DCHINV, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PASS, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-6 l">
+                        @Html.EditorFor(model => model.PASS, new { htmlAttributes = new { @class = "form-control", placeholder = "Dưới 15 kí tự" } })
+                        @Html.ValidationMessageFor(model => model.PASS, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GRANT, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-3 ">
+                                @{
+                                    List<SelectListItem> listItems = new List<SelectListItem>();
+                                    listItems.Clear();
+                                    listItems.Add(new SelectListItem { Text = "0" });
+                                    listItems.Add(new SelectListItem { Text = "1" });
+                                    listItems.Add(new SelectListItem { Text = "2" });
+                                }
+                                @*@Html.EditorFor(model => model.GRANT,new { htmlAttributes = new { @class = "form-control ", placeholder = "0: chưa cấp quyền; 1: nhân viên; 2: quản lí" } })*@
+                                @Html.DropDownListFor(model => model.GRANT,listItems, new { @class = "form-control ", placeholder = "0: chưa cấp quyền; 1: nhân viên; 2: quản lí" } )
+                                @Html.ValidationMessageFor(model => model.GRANT, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-3 " style="color:crimson">0: chưa cấp quyền; 1: nhân viên; 2: quản lí</div>
+                    <div class="col-md-3"></div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EMAIL, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control", placeholder = "example@gmail.com" } })
+                        @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger"})
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AVATAR, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.AVATAR, new { htmlAttributes = new { @class = "form-control", type="file"} })
+                        @Html.ValidationMessageFor(model => model.AVATAR, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+            <div class="form-group box-footer">
+                <div class="col-md-offset-3 col-md-9">
+                    <span>
+                        <input type="submit" value="Thêm" class="btn btn-primary btn" /> &nbsp &nbsp
+                        <a href="/Admin/Nhanvien/Index"><input class="btn btn-default" type="button" value="Hủy" /></a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+
