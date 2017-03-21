@@ -55,3 +55,7 @@ D:\KHMT\LuanVan\Web\QLPC\QLPC\bin\Newtonsoft.Json.xml
 D:\KHMT\LuanVan\Web\QLPC\QLPC\obj\Debug\QLPC.csprojResolveAssemblyReference.cache
 D:\KHMT\LuanVan\Web\QLPC\QLPC\obj\Debug\QLPC.dll
 D:\KHMT\LuanVan\Web\QLPC\QLPC\obj\Debug\QLPC.pdb
+D:\KHMT\LuanVan\Web\QLPC\QLPC\bin\PagedList.dll
+D:\KHMT\LuanVan\Web\QLPC\QLPC\bin\PagedList.Mvc.dll
+D:\KHMT\LuanVan\Web\QLPC\QLPC\bin\PagedList.xml
+D:\KHMT\LuanVan\Web\QLPC\QLPC\bin\PagedList.Mvc.xml

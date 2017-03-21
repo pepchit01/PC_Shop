@@ -4,6 +4,10 @@
     ViewBag.Title = "Danh sách nhân viên";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+@using PagedList.Mvc;
+@using PagedList;
+
+
 <div class="box box-primary">
     <div class="box-header with-border">
         <h2 >Danh sách nhân viên</h2>
@@ -33,25 +37,25 @@
         <th class="col-md-2">Tùy chọn</th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in ViewBag.OnePageOfNhanvien) {
     <tr class="active  ">
         <td>
-            @Html.DisplayFor(modelItem => item.MANV)
+            @(item.MANV)
         </td>
         <td >
-            @Html.DisplayFor(modelItem => item.TENNV)
+            @item.TENNV
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DTHOAINV)
+            @item.DTHOAINV
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DCHINV)
+            @item.DCHINV
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.GRANT)
+            @item.GRANT
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.EMAIL)
+            @item.EMAIL
         </td>
         <td>
             <div class="btn-group ">
@@ -65,9 +69,10 @@
         </td>
     </tr>
 }
-
 </table>
+
     <div class="box-footer">
+        @Html.PagedListPager((IPagedList)ViewBag.OnePageOfNhanvien, page => Url.Action("Index", new { page }))
     </div>
 </div>
 

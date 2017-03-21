@@ -35,7 +35,7 @@
         public string DCHIKH { get; set; }
 
         [Required(ErrorMessage = "Vui lòng nhập đúng số điện thoại")]
-        [Display(Name = "Điện thoại khách hàng")]
+        [Display(Name = "Điện thoại")]
         [StringLength(12, ErrorMessage = "Số điện thoại không đúng", MinimumLength = 10)]
         public string DTHOAIKH { get; set; }
 

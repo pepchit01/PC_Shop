@@ -1,0 +1,59 @@
+﻿@model IEnumerable<QLPC.Models.DataModel.KHACHHANG>
+
+@{
+    ViewBag.Title = "Danh sách khách hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@using PagedList.Mvc;
+@using PagedList;
+
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h2>Danh sách khách hàng</h2>
+    </div>
+
+    <a href="/Admin/Khachhang/Create"><input class="btn btn-primary" type="button" value="Thêm mới khách hàng" /></a>
+    <table class="table table-responsive table-hover table-bordered table-condensed ">
+        <tr class="info">
+            <th>
+                @Html.DisplayNameFor(model => model.TENKH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DCHIKH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DTHOAIKH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TINH)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in ViewBag.khachhang)
+        {
+            <tr class="active ">
+                <td>
+                    @item.TENKH
+                </td>
+                <td>
+                    @item.DCHIKH
+                </td>
+                <td>
+                    @item.DTHOAIKH
+                </td>
+                <td>
+                    @item.TINH
+                </td>
+                <td class="btn-group ">
+                    @Html.ActionLink(" ", "Edit", new { id = item.MAKH }, new { @class = "btn btn-primary glyphicon glyphicon-edit", data_toggle = "tooltip", title = "Cập nhật" })
+                    @Html.ActionLink(" ", "Details", new { id = item.MAKH }, new { @class = "btn btn-primary glyphicon glyphicon-list-alt", data_toggle = "tooltip", title = "Xem" })
+                    @Html.ActionLink(" ", "Delete", new { id = item.MAKH }, new { @class = "btn btn-primary glyphicon glyphicon-remove-sign disabled", data_toggle = "tooltip", title = "Xóa", @onclick = "return confirm('Khách hàng này sẽ được xóa khỏi danh dách! Bạn có muốn xóa?');" })
+                </td>
+            </tr>
+        }
+    </table>
+    <div>
+        @Html.PagedListPager((IPagedList)ViewBag.khachhang, page => Url.Action("Index", new { page }))
+    </div>
+</div>

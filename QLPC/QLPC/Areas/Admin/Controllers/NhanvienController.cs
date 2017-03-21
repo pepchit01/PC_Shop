@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using QLPC.Models.BussinessModel;
 using QLPC.Models.DataModel;
+using PagedList;
 
 namespace QLPC.Areas.Admin.Controllers
 {
@@ -17,9 +18,13 @@ namespace QLPC.Areas.Admin.Controllers
 
         // GET: Admin/Nhanvien
         //Trang hiển thị danh sách nhân viên
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(db.nhanvien.ToList());
+            var products = db.nhanvien.ToList();
+            var pageNumber = page ?? 1;
+            var onePageOfNhanviens = products.ToPagedList(pageNumber, 5);
+            ViewBag.OnePageOfNhanvien = onePageOfNhanviens;
+            return View(/*db.nhanvien.ToList()*/);
         }
 
         // GET: Admin/Nhanvien/Details/5
