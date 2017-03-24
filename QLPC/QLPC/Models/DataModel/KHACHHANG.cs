@@ -21,7 +21,7 @@
 
         [Key]
         [StringLength(10)]
-        [Display(Name = "Mã khách hàng")]
+        [Display(Name = "ID")]
         public string MAKH { get; set; }
 
         [Required(ErrorMessage = "Vui lòng nhập đầy đủ tên khách hàng")]
@@ -46,10 +46,10 @@
         [Display(Name = "Mật khẩu")]
         [Required(ErrorMessage = "Vui lòng nhập mật khẩu")]
         [StringLength(15, ErrorMessage = "Độ dài mật khẩu từ 6-15 kí tự", MinimumLength = 6)]
-        [DataType(DataType.Password)]
+        //[DataType(DataType.Password)]
         public string PASS { get; set; }
 
-        [StringLength(100)]
+        [StringLength(100,ErrorMessage ="Độ dài email dưới 100 kí tự.")]
         [Display(Name = "Email")]
         [DataType(DataType.EmailAddress, ErrorMessage = "Hãy nhập đúng Email của bạn")]
         public string EMAIL { get; set; }

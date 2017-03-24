@@ -13,39 +13,45 @@
     </div>
 
     <a href="/Admin/Khachhang/Create"><input class="btn btn-primary" type="button" value="Thêm mới khách hàng" /></a>
-    <table class="table table-responsive table-hover table-bordered table-condensed ">
+    <table class="table table-responsive table-hover table-bordered table-condensed  ">
         <tr class="info">
-            <th>
+            <th class="col-md-1" >
+                @Html.DisplayNameFor(model => model.MAKH)
+            </th>
+            <th class="col-md-2">
                 @Html.DisplayNameFor(model => model.TENKH)
             </th>
-            <th>
+            <th class="col-md-5">
                 @Html.DisplayNameFor(model => model.DCHIKH)
             </th>
-            <th>
+            <th class="col-md-1">
                 @Html.DisplayNameFor(model => model.DTHOAIKH)
             </th>
-            <th>
+            <th class="col-md-1">
                 @Html.DisplayNameFor(model => model.TINH)
             </th>
-            <th></th>
+            <th class="col-md-2">Tùy chọn</th>
         </tr>
 
         @foreach (var item in ViewBag.khachhang)
         {
             <tr class="active ">
-                <td>
+                <td class="col-md-1">
+                    @item.MAKH
+                </td>
+                <td class="col-md-2">
                     @item.TENKH
                 </td>
-                <td>
+                <td class="col-md-5">
                     @item.DCHIKH
                 </td>
-                <td>
+                <td class="col-md-1">
                     @item.DTHOAIKH
                 </td>
-                <td>
+                <td class="col-md-1">
                     @item.TINH
                 </td>
-                <td class="btn-group ">
+                <td class="btn-group col-md-2">
                     @Html.ActionLink(" ", "Edit", new { id = item.MAKH }, new { @class = "btn btn-primary glyphicon glyphicon-edit", data_toggle = "tooltip", title = "Cập nhật" })
                     @Html.ActionLink(" ", "Details", new { id = item.MAKH }, new { @class = "btn btn-primary glyphicon glyphicon-list-alt", data_toggle = "tooltip", title = "Xem" })
                     @Html.ActionLink(" ", "Delete", new { id = item.MAKH }, new { @class = "btn btn-primary glyphicon glyphicon-remove-sign disabled", data_toggle = "tooltip", title = "Xóa", @onclick = "return confirm('Khách hàng này sẽ được xóa khỏi danh dách! Bạn có muốn xóa?');" })

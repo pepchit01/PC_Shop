@@ -30,3 +30,5 @@ namespace QLPC.Models.BussinessModel
         public DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }
+
+

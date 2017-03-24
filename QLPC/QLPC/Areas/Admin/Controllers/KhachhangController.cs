@@ -10,6 +10,7 @@ using QLPC.Models.BussinessModel;
 using QLPC.Models.DataModel;
 using PagedList;
 
+
 namespace QLPC.Areas.Admin.Controllers
 {
     public class KhachhangController : Controller
@@ -28,12 +29,25 @@ namespace QLPC.Areas.Admin.Controllers
 
         // GET: Admin/Khachhang/Details/5
         public ActionResult Details(string id)
-        {
+        {          
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             KHACHHANG kHACHHANG = db.khachhang.Find(id);
+            ViewBag.luotmua = db.muaban.Where(x => x.MAKH.Equals(id)).Count();
+            var sanphams = (from m in db.muaban //lấy danh sách sản phẩm mà người dùng mua
+                                            join s in db.sanpham
+                                            on m.SERIAL equals s.SERIAL
+                                            where m.MAKH.Equals(id)
+                                            select new 
+                                            {                   
+                                                TENMAY = s.TENMAY,
+                                                MODEL = s.MODEL,
+                                                IMAGE = s.IMAGE,
+                                                GIA = s.GIA
+                                            }).ToList();
+            ViewBag.sanpham = sanphams;
             if (kHACHHANG == null)
             {
                 return HttpNotFound();
@@ -48,8 +62,6 @@ namespace QLPC.Areas.Admin.Controllers
         }
 
         // POST: Admin/Khachhang/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MAKH,TENKH,DCHIKH,DTHOAIKH,TINH,PASS,EMAIL")] KHACHHANG kHACHHANG)
@@ -61,7 +73,7 @@ namespace QLPC.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(kHACHHANG);
+            return View();
         }
 
         // GET: Admin/Khachhang/Edit/5
@@ -80,8 +92,6 @@ namespace QLPC.Areas.Admin.Controllers
         }
 
         // POST: Admin/Khachhang/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MAKH,TENKH,DCHIKH,DTHOAIKH,TINH,PASS,EMAIL")] KHACHHANG kHACHHANG)
@@ -95,20 +105,6 @@ namespace QLPC.Areas.Admin.Controllers
             return View(kHACHHANG);
         }
 
-        // GET: Admin/Khachhang/Delete/5
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            KHACHHANG kHACHHANG = db.khachhang.Find(id);
-            if (kHACHHANG == null)
-            {
-                return HttpNotFound();
-            }
-            return View(kHACHHANG);
-        }
 
         // POST: Admin/Khachhang/Delete/5
         [HttpPost, ActionName("Delete")]
@@ -119,15 +115,6 @@ namespace QLPC.Areas.Admin.Controllers
             db.khachhang.Remove(kHACHHANG);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }
