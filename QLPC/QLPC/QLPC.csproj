@@ -170,6 +170,7 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\KhachhangController.cs" />
     <Compile Include="Areas\Admin\Controllers\NhanvienController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SanphamController.cs" />
     <Compile Include="Models\BussinessModel\QLPCDbContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -196,6 +197,13 @@
     <Content Include="App_Data\QLPC_log.ldf">
       <DependentUpon>QLPC.mdf</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Content\imagePC\Acer.jpg" />
+    <Content Include="Areas\Admin\Content\imagePC\asus.jpg" />
+    <Content Include="Areas\Admin\Content\imagePC\dell.jpg" />
+    <Content Include="Areas\Admin\Content\imagePC\hp.jpg" />
+    <Content Include="Areas\Admin\Content\imagePC\lenovo.jpg" />
+    <Content Include="Areas\Admin\Content\imagePC\macbook.jpg" />
+    <Content Include="Areas\Admin\Content\imagePC\Vaio.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
@@ -221,6 +229,11 @@
     <Content Include="Areas\Admin\Views\Khachhang\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Khachhang\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Khachhang\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Sanpham\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Sanpham\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Sanpham\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Sanpham\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Sanpham\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

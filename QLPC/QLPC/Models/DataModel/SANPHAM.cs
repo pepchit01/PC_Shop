@@ -33,18 +33,18 @@
         [Display(Name = "Mã nhà phân phối")]
         public int MANPP { get; set; }
 
-        [Display(Name = "Tên sản phẩm")]
+        [Display(Name = "Tên máy")]
         [StringLength(50)]
         public string TENMAY { get; set; }
 
-        [Display(Name = "Mã hiệu")]
+        [Display(Name = "")]
         [StringLength(100)]
         public string MODEL { get; set; }
 
         [Display(Name = "Giá niêm yết")]
         public decimal? GIA { get; set; }
 
-        [Display(Name = "Số lượng hàng trong kho")]
+        [Display(Name = "Số lượng")]
         public int? SOLUONG { get; set; }
 
         [Display(Name = "Thời gian bảo hành")]

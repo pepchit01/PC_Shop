@@ -1,0 +1,81 @@
+﻿@model IEnumerable<QLPC.Models.DataModel.SANPHAM>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@using PagedList.Mvc;
+@using PagedList;
+
+
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h2>Danh sách sản phẩm</h2>
+    </div>
+
+    <a href="/Admin/Sanpham/Create"><input class="btn btn-primary" type="button" value="Thêm mới sản phẩm" /></a>
+    <table class="table table-responsive table-hover table-bordered table-condensed ">
+        <tr class="info">
+            <th class="2">
+                @Html.DisplayNameFor(model => model.SERIAL)
+            </th>
+            <th class="col-md-2">
+                @Html.DisplayNameFor(model => model.TENMAY)
+            </th>
+            <th class="col-md-2">
+                @Html.DisplayNameFor(model => model.MODEL)
+            </th>
+            <th class="col-md-2">
+                @Html.DisplayNameFor(model => model.GIA)
+            </th>
+            <th class="col-md-1">
+                @Html.DisplayNameFor(model => model.SOLUONG)
+            </th>
+            <th class="col-md-1">
+                @Html.DisplayNameFor(model => model.IMAGE)
+            </th>
+            <th class="col-md-2">Tùy chọn</th>
+        </tr>
+
+        @foreach (var item in ViewBag.sanpham)
+        {
+            <tr class="active  ">
+                <td>
+                    @item.SERIAL
+                </td>
+                <td>
+                    @item.TENMAY
+                </td>
+                <td>
+                    @item.MODEL
+                </td>
+                <td>
+                    @item.GIA
+                </td>
+                <td>
+                    @item.SOLUONG
+                </td>
+                <td>
+                    <img src="@item.IMAGE" width="100" height="100"/>
+                </td>
+                <td>
+                    <div class="btn-group ">
+                        @Html.ActionLink(" ", "Edit", new { id = item.SERIAL }, new { @class = "btn btn-primary glyphicon glyphicon-edit", data_toggle = "tooltip", title = "Cập nhật" })
+                        @Html.ActionLink(" ", "Details", new { id = item.SERIAL }, new { @class = "btn btn-primary glyphicon glyphicon-list-alt", data_toggle = "tooltip", title = "Xem" })
+                        @Html.ActionLink(" ", "Delete", new { id = item.SERIAL }, new { @class = "btn btn-primary glyphicon glyphicon-remove-sign disabled", data_toggle = "tooltip", title = "Xóa", @onclick = "return confirm('Sản phẩm này sẽ được xóa khỏi danh dách! Bạn có muốn xóa?');" })
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+
+    <div>
+        @Html.PagedListPager((IPagedList)ViewBag.sanpham, page => Url.Action("Index", new { page }))
+    </div>
+</div>
+
+<script>
+$(document).ready(function(){
+    $('[data_toggle="tooltip"]').tooltip();
+});
+</script>
