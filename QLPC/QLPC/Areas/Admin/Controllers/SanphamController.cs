@@ -103,39 +103,24 @@ namespace QLPC.Areas.Admin.Controllers
             return View(sANPHAM);
         }
 
-        // GET: Admin/Sanpham/Delete/5
+
+        // POST: Admin/Sanpham/Delete/5
         public ActionResult Delete(string id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             SANPHAM sANPHAM = db.sanpham.Find(id);
-            if (sANPHAM == null)
+            if (sANPHAM != null)
             {
-                return HttpNotFound();
+                db.sanpham.Remove(sANPHAM);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            return View(sANPHAM);
-        }
-
-        // POST: Admin/Sanpham/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            SANPHAM sANPHAM = db.sanpham.Find(id);
-            db.sanpham.Remove(sANPHAM);
-            db.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

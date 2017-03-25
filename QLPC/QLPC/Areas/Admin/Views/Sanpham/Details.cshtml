@@ -5,103 +5,45 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>SANPHAM</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.HANGSX.TENHSX)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HANGSX.TENHSX)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NHAPHANPHOI.TENNPP)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NHAPHANPHOI.TENNPP)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TENMAY)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TENMAY)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MODEL)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MODEL)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GIA)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GIA)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SOLUONG)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SOLUONG)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.THOIHANBAOHANH)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.THOIHANBAOHANH)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IMAGE)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IMAGE)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MOREIMAGE)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MOREIMAGE)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GIAKHUYENMAI)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GIAKHUYENMAI)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DETAIL)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DETAIL)
-        </dd>
-
-    </dl>
+<div class="box box-primary">
+    <div class="box-header "><h2>Chi tiết sản phẩm</h2></div>
+    <br />
+    <div>
+        <table class="table">
+            <tr>
+                <td class="col-md-3" rowspan="9" width="250"><img src="@Model.IMAGE" width="250" height="250" /><br/><a href="#"><u>Xem thêm ảnh</a></u></td>
+                <th class="col-md-1">Tên máy:</th> 
+                <td class="col-md-2"><p style="color:blue">@Model.TENMAY</p></td>
+                <th class="col-md-1">Nhà phân phối:</th>
+                <td class="col-md-1">Asux</td>
+                <th class="col-md-1">Số lượng:</th>
+                <td class="col-md-1">@Model.SOLUONG</td> 
+                <th class="col-md-1">Giá niêm yết:</th>
+                <td class="col-md-1">@Model.GIA</td>              
+            </tr>
+            <tr>
+                
+                <th>Mã hiệu:</th>
+                <td class="col-md-2"><p style="color:blue">@Model.MODEL</p></td>
+                <th>Hãng sản xuất:</th>
+                <td>FPT</td>
+                <th>Bảo hành (tháng):</th>
+                <td>@Model.THOIHANBAOHANH</td>
+                <th>Giá khuyến mãi:</th>
+                <td>@Model.GIAKHUYENMAI</td>
+            </tr>
+            <tr>             
+                <th colspan="7">Mô tả:</th>
+            </tr>
+        </table>
+    </div>
+    <div class="form-group box-footer">
+        <div class="col-md-offset-3 col-md-9">
+            <span>
+                <input type="submit" value="Cập nhật" class="btn btn-primary btn" /> &nbsp &nbsp
+                <a href="/Admin/Sanpham/Index"><input class="btn btn-default" type="button" value="Trở về" /></a>
+            </span>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.SERIAL }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

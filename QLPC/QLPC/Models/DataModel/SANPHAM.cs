@@ -37,7 +37,7 @@
         [StringLength(50)]
         public string TENMAY { get; set; }
 
-        [Display(Name = "")]
+        [Display(Name = "Mã hiệu (model)")]
         [StringLength(100)]
         public string MODEL { get; set; }
 

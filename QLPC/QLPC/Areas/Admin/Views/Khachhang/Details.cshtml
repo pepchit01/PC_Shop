@@ -8,10 +8,10 @@
     <div class="box-header ">
         <h3>Thông tin chi tiết khách hàng</h3>
         <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Thu gọn">
                 <i class="fa fa-minus"></i>
             </button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Đóng">
                 <i class="fa fa-times"></i>
             </button>
         </div>
@@ -51,23 +51,23 @@
     <div class="box-header with-border">
         <h3 class="box-title">Sản phẩm đã mua</h3>
         <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Thu gọn">
                 <i class="fa fa-minus"></i>
             </button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Đóng">
                 <i class="fa fa-times"></i>
             </button>
         </div>
     </div>
-    @*<div class="box-body">
+    <div class="box-body" >
    @foreach(var item in ViewBag.sanpham){ 
-         <div style="width:100px" class="active">
-             <div><img src="@item.IMAGE"/></div>
-             <div>@item.TENMAY @item.MODEL</div>
+         <div style="width:200px" class="active">
+             <div><img src="@item.SANPHAM.IMAGE" width="200" height="200"/></div>
+             <div style="text-align:center"><a href="/Admin/Sanpham/Details/@item.SERIAL">@item.SANPHAM.TENMAY @item.SANPHAM.MODEL</a></div>
          </div>
-        }*@
+        }
     </div>
     <div class="box-footer">
-        Footer
+        
     </div>
 </div>

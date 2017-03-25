@@ -14,6 +14,7 @@
         @Html.AntiForgeryToken()
         <div class="form-horizontal">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
             <div class="form-group">
                 @Html.LabelFor(model => model.SERIAL, htmlAttributes: new { @class = "control-label col-md-3" })
                 <div class="col-md-6">
@@ -127,7 +128,7 @@
             <div class="col-md-offset-3 col-md-9">
                 <span>
                     <input type="submit" value="Thêm" class="btn btn-primary btn" /> &nbsp &nbsp
-                    <a href="/Admin/Nhanvien/Index"><input class="btn btn-default" type="button" value="Hủy" /></a>
+                    <a href="/Admin/Sanpham/Index"><input class="btn btn-default" type="button" value="Hủy" /></a>
                 </span>
             </div>
         </div>

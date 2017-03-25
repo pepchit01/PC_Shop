@@ -230,7 +230,6 @@
     <Content Include="Areas\Admin\Views\Khachhang\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Khachhang\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Sanpham\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Sanpham\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Sanpham\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Sanpham\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Sanpham\Index.cshtml" />

@@ -36,18 +36,19 @@ namespace QLPC.Areas.Admin.Controllers
             }
             KHACHHANG kHACHHANG = db.khachhang.Find(id);
             ViewBag.luotmua = db.muaban.Where(x => x.MAKH.Equals(id)).Count();
-            var sanphams = (from m in db.muaban //lấy danh sách sản phẩm mà người dùng mua
-                                            join s in db.sanpham
-                                            on m.SERIAL equals s.SERIAL
-                                            where m.MAKH.Equals(id)
-                                            select new 
-                                            {                   
-                                                TENMAY = s.TENMAY,
-                                                MODEL = s.MODEL,
-                                                IMAGE = s.IMAGE,
-                                                GIA = s.GIA
-                                            }).ToList();
-            ViewBag.sanpham = sanphams;
+            var sp = db.muaban.Include(s => s.SANPHAM).Where(x => x.MAKH.Equals(id)).ToList();
+            //var sanphams = (from m in db.muaban //lấy danh sách sản phẩm mà người dùng mua
+            //                                join s in db.sanpham
+            //                                on m.SERIAL equals s.SERIAL
+            //                                where m.MAKH.Equals(id)
+            //                                select new 
+            //                                {                   
+            //                                    TENMAY = s.TENMAY,
+            //                                    MODEL = s.MODEL,
+            //                                    IMAGE = s.IMAGE,
+            //                                    GIA = s.GIA
+            //                                }).ToList();
+            ViewBag.sanpham = sp;
             if (kHACHHANG == null)
             {
                 return HttpNotFound();
@@ -109,7 +110,7 @@ namespace QLPC.Areas.Admin.Controllers
         // POST: Admin/Khachhang/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult Delete(string id)
         {
             KHACHHANG kHACHHANG = db.khachhang.Find(id);
             db.khachhang.Remove(kHACHHANG);
