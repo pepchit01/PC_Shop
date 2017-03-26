@@ -170,6 +170,7 @@
     <Compile Include="Areas\Admin\Controllers\HangsanxuatController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\KhachhangController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MuabanController.cs" />
     <Compile Include="Areas\Admin\Controllers\NhanvienController.cs" />
     <Compile Include="Areas\Admin\Controllers\NhaphanphoiController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanphamController.cs" />
@@ -241,6 +242,11 @@
     <Content Include="Areas\Admin\Views\Nhaphanphoi\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Nhaphanphoi\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Nhaphanphoi\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Muaban\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Muaban\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Muaban\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Muaban\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Muaban\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
