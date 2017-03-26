@@ -239,8 +239,6 @@
     <Content Include="Areas\Admin\Views\Hangsanxuat\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Hangsanxuat\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Nhaphanphoi\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Nhaphanphoi\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Nhaphanphoi\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Nhaphanphoi\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Nhaphanphoi\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

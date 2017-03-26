@@ -4,49 +4,63 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+@using PagedList.Mvc;
+@using PagedList;
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TENNPP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DCHINPP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DTHOAINPP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FAXNPP)
-        </th>
-        <th></th>
-    </tr>
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h2>Danh sách nhà phân phối</h2>
+    </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TENNPP)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DCHINPP)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DTHOAINPP)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FAXNPP)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MANPP }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MANPP }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MANPP })
-        </td>
-    </tr>
-}
+    <a href="/Admin/Nhaphanphoi/Create"><input class="btn btn-primary" type="button" value="Thêm mới nhà phân phối" /></a>
+    <table class="table table-responsive table-hover table-bordered table-condensed ">
+        <tr class="info">
+            <th>
+                @Html.DisplayNameFor(model => model.TENNPP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DCHINPP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DTHOAINPP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FAXNPP)
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in ViewBag.onePageOfNhaPP)
+        {
+            <tr class="active">
+                <td>
+                    @item.TENNPP
+                </td>
+                <td>
+                    @item.DCHINPP
+                </td>
+                <td>
+                    @item.DTHOAINPP
+                </td>
+                <td>
+                    @item.FAXNPP
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.MANPP }, new { @class = "btn btn-primary glyphicon glyphicon-edit", data_toggle = "tooltip", title = "Cập nhật" })
+                    @Html.ActionLink(" ", "Details", new { id = item.MANPP }, new { @class = "btn btn-primary glyphicon glyphicon-list-alt disabled", data_toggle = "tooltip", title = "Xem" })
+                    @Html.ActionLink(" ", "Delete", new { id = item.MANPP }, new { @class = "btn btn-primary glyphicon glyphicon-remove-sign disabled", data_toggle = "tooltip", title = "Xóa", @onclick = "return confirm('Nhà phân phối này sẽ được xóa khỏi danh dách! Bạn có muốn xóa?');" })
+                </td>
+            </tr>
+        }
+    </table>
+    <div class="box-footer">
+        @Html.PagedListPager((IPagedList)ViewBag.onePageOfNhaPP, page => Url.Action("Index", new { page }))
+    </div>
+</div>
+
+<script>
+$(document).ready(function(){
+    $('[data_toggle="tooltip"]').tooltip();
+});
+</script>

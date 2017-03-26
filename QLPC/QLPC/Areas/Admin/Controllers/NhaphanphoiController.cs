@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using QLPC.Models.BussinessModel;
 using QLPC.Models.DataModel;
+using PagedList;
 
 namespace QLPC.Areas.Admin.Controllers
 {
@@ -16,9 +17,13 @@ namespace QLPC.Areas.Admin.Controllers
         private QLPCDbContext db = new QLPCDbContext();
 
         // GET: Admin/Nhaphanphoi
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(db.nhaphanphoi.ToList());
+            var nhapp = db.nhaphanphoi.ToList();
+            var pageNumber = page ?? 1;
+            var onePageOfNhaPPs = nhapp.ToPagedList(pageNumber, 10);
+            ViewBag.onePageOfNhaPP = onePageOfNhaPPs;
+            return View();
         }
 
         // GET: Admin/Nhaphanphoi/Details/5

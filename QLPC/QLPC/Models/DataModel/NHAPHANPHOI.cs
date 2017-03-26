@@ -19,7 +19,8 @@
         [Display(Name = "Mã nhà phân phối")]
         public int MANPP { get; set; }
 
-        [StringLength(100)]
+        [StringLength(200)]
+        [Required(ErrorMessage ="Vui lòng nhập tên nhà phân phối")]
         [Display(Name = "Tên nhà phân phối")]
         public string TENNPP { get; set; }
 
@@ -28,6 +29,7 @@
         public string DCHINPP { get; set; }
 
         [StringLength(12)]
+        [Required(ErrorMessage = "Vui lòng nhập điện thoại nhà phân phối")]
         [Display(Name = "Điện thoại")]
         public string DTHOAINPP { get; set; }
 
