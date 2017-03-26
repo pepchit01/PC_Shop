@@ -98,9 +98,8 @@ namespace QLPC.Models.DataModel
                 .Map(m => m.ToTable("GIOHANG").MapLeftKey("MAKH").MapRightKey("SERIAL"));
 
             modelBuilder.Entity<LINHKIEN>()
-                .HasMany(e => e.SANPHAMs)
-                .WithMany(e => e.LINHKIENs)
-                .Map(m => m.ToTable("COLK").MapLeftKey("MALK").MapRightKey("SERIAL"));
+                .Property(e => e.SERIAL)
+                .IsUnicode(false);
 
             modelBuilder.Entity<MUABAN>()
                 .Property(e => e.SERIAL)
@@ -155,8 +154,8 @@ namespace QLPC.Models.DataModel
                 .IsUnicode(false);
 
             modelBuilder.Entity<SANPHAM>()
-                .Property(e => e.SERIAL)
-                .IsUnicode(false);
+                 .Property(e => e.SERIAL)
+                 .IsUnicode(false);
 
             modelBuilder.Entity<SANPHAM>()
                 .Property(e => e.MODEL)
@@ -186,6 +185,11 @@ namespace QLPC.Models.DataModel
 
             modelBuilder.Entity<SANPHAM>()
                 .HasMany(e => e.RATINGs)
+                .WithRequired(e => e.SANPHAM)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<SANPHAM>()
+                .HasMany(e => e.LINHKIENs)
                 .WithRequired(e => e.SANPHAM)
                 .WillCascadeOnDelete(false);
 

@@ -62,7 +62,7 @@
                     <div class="btn-group ">
                         @Html.ActionLink(" ", "Edit", new { id = item.SERIAL }, new { @class = "btn btn-primary glyphicon glyphicon-edit", data_toggle = "tooltip", title = "Cập nhật" })
                         @Html.ActionLink(" ", "Details", new { id = item.SERIAL }, new { @class = "btn btn-primary glyphicon glyphicon-list-alt", data_toggle = "tooltip", title = "Xem" })
-                        @Html.ActionLink(" ", "Delete", new { id = item.SERIAL }, new { @class = "btn btn-primary glyphicon glyphicon-remove-sign ", data_toggle = "tooltip", title = "Xóa", @onclick = "return confirm('Sản phẩm này sẽ được xóa khỏi danh dách! Bạn có muốn xóa?');" })
+                        @Html.ActionLink(" ", "Delete", new { id = item.SERIAL }, new { @class = "btn btn-primary glyphicon glyphicon-remove-sign disabled", data_toggle = "tooltip", title = "Xóa", @onclick = "return confirm('Sản phẩm này sẽ được xóa khỏi danh dách! Bạn có muốn xóa?');" })
                     </div>
                 </td>
             </tr>

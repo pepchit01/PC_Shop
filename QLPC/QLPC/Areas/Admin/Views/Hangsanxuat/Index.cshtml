@@ -1,0 +1,67 @@
+﻿@model IEnumerable<QLPC.Models.DataModel.HANGSX>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@using PagedList.Mvc;
+@using PagedList;
+
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h2>Danh sách hãng sản xuất</h2>
+    </div>
+
+    <a href="/Admin/Hangsanxuat/Create"><input class="btn btn-primary" type="button" value="Thêm mới hãng sản xuất" /></a>
+    <table class="table table-responsive table-hover table-bordered table-condensed ">
+        <tr class="info">
+            <th class="col-md-1">
+                @Html.DisplayNameFor(model => model.MAHSX)
+            </th>
+            <th class="col-md-3">
+                @Html.DisplayNameFor(model => model.TENHSX)
+            </th>
+            <th class="col-md-4">
+                @Html.DisplayNameFor(model => model.DCHIHSX)
+            </th>
+            <th class="col-md-2">
+                @Html.DisplayNameFor(model => model.DTHOAIHSX)
+            </th>
+            <th class="col-md-2">Tùy chọn</th>
+        </tr>
+
+        @foreach (var item in ViewBag.onePageOfHangsx)
+        {
+            <tr class="active">
+                <td>
+                    @item.MAHSX
+                </td>
+                <td>
+                    @item.TENHSX
+                </td>
+                <td>
+                    @item.DCHIHSX
+                </td>
+                <td>
+                    @item.DTHOAIHSX
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.MAHSX }, new { @class = "btn btn-primary glyphicon glyphicon-edit", data_toggle = "tooltip", title = "Cập nhật" })
+                    @Html.ActionLink(" ", "Details", new { id = item.MAHSX }, new { @class = "btn btn-primary glyphicon glyphicon-list-alt disabled", data_toggle = "tooltip", title = "Xem" })
+                    @Html.ActionLink(" ", "Delete", new { id = item.MAHSX }, new { @class = "btn btn-primary glyphicon glyphicon-remove-sign disabled", data_toggle = "tooltip", title = "Xóa", @onclick = "return confirm('Nhân viên này sẽ được xóa khỏi danh dách! Bạn có muốn xóa?');" })
+ 
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div class="box-footer">
+        @Html.PagedListPager((IPagedList)ViewBag.onePageOfHangsx, page => Url.Action("Index", new { page }))
+    </div>
+</div>
+
+<script>
+$(document).ready(function(){
+    $('[data_toggle="tooltip"]').tooltip();
+});
+</script>

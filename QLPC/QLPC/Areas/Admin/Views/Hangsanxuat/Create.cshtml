@@ -1,0 +1,52 @@
+﻿@model QLPC.Models.DataModel.HANGSX
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="box box-primary">
+        <div class="box-header with-border"><h2>Thêm mới hãng sản xuất</h2></div>
+        <br />
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.TENHSX, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.TENHSX, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TENHSX, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DCHIHSX, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.DCHIHSX, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DCHIHSX, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DTHOAIHSX, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.DTHOAIHSX, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DTHOAIHSX, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+            <div class="form-group box-footer">
+                <div class="col-md-offset-3 col-md-9">
+                    <span>
+                        <input type="submit" value="Thêm" class="btn btn-primary btn" /> &nbsp &nbsp
+                        <a href="/Admin/Hangsanxuat/Index"><input class="btn btn-default" type="button" value="Hủy" /></a>
+                    </span>
+                </div>
+            </div>
+        </div>
+}

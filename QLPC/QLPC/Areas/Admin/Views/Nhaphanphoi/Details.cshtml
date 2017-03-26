@@ -1,0 +1,51 @@
+﻿@model QLPC.Models.DataModel.NHAPHANPHOI
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NHAPHANPHOI</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TENNPP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENNPP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DCHINPP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DCHINPP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DTHOAINPP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DTHOAINPP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FAXNPP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FAXNPP)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MANPP }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

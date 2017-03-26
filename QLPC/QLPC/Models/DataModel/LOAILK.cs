@@ -10,10 +10,6 @@
     public partial class LOAILK
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public LOAILK()
-        {
-            LINHKIENs = new HashSet<LINHKIEN>();
-        }
 
         [Key]
         public int MALOAI { get; set; }
@@ -23,7 +19,5 @@
         [Display(Name = "Tên Loại")]
         public string TENLOAI { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LINHKIEN> LINHKIENs { get; set; }
     }
 }

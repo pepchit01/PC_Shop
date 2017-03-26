@@ -1,0 +1,52 @@
+﻿@model IEnumerable<QLPC.Models.DataModel.NHAPHANPHOI>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TENNPP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DCHINPP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DTHOAINPP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FAXNPP)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TENNPP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DCHINPP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DTHOAINPP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FAXNPP)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MANPP }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MANPP }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MANPP })
+        </td>
+    </tr>
+}
+
+</table>

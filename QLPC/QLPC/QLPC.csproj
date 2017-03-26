@@ -167,9 +167,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HangsanxuatController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\KhachhangController.cs" />
     <Compile Include="Areas\Admin\Controllers\NhanvienController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NhaphanphoiController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanphamController.cs" />
     <Compile Include="Models\BussinessModel\QLPCDbContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -233,6 +235,14 @@
     <Content Include="Areas\Admin\Views\Sanpham\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Sanpham\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Sanpham\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Hangsanxuat\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Hangsanxuat\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Hangsanxuat\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Nhaphanphoi\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Nhaphanphoi\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Nhaphanphoi\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Nhaphanphoi\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Nhaphanphoi\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

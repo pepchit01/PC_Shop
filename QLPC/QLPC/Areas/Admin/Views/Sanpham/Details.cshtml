@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    string ID = "1";
 }
 
 
@@ -11,39 +12,149 @@
     <br />
     <div>
         <table class="table">
-            <tr>
-                <td class="col-md-3" rowspan="9" width="250"><img src="@Model.IMAGE" width="250" height="250" /><br/><a href="#"><u>Xem thêm ảnh</a></u></td>
-                <th class="col-md-1">Tên máy:</th> 
-                <td class="col-md-2"><p style="color:blue">@Model.TENMAY</p></td>
-                <th class="col-md-1">Nhà phân phối:</th>
-                <td class="col-md-1">Asux</td>
-                <th class="col-md-1">Số lượng:</th>
-                <td class="col-md-1">@Model.SOLUONG</td> 
-                <th class="col-md-1">Giá niêm yết:</th>
-                <td class="col-md-1">@Model.GIA</td>              
-            </tr>
-            <tr>
-                
-                <th>Mã hiệu:</th>
-                <td class="col-md-2"><p style="color:blue">@Model.MODEL</p></td>
-                <th>Hãng sản xuất:</th>
-                <td>FPT</td>
-                <th>Bảo hành (tháng):</th>
-                <td>@Model.THOIHANBAOHANH</td>
-                <th>Giá khuyến mãi:</th>
-                <td>@Model.GIAKHUYENMAI</td>
-            </tr>
-            <tr>             
-                <th colspan="7">Mô tả:</th>
-            </tr>
+
+@foreach (var item in ViewBag.SP)
+{
+    ID = item.SERIAL;
+                <tr>
+                    <td class="col-md-3" rowspan="9" width="250"><img src="@item.IMAGE" width="250" height="250" /><br /><br/>
+                    <div>
+                        <button type="button" class="btn btn-default " data-toggle="modal" data-target="#myModal1">Xem thêm ảnh</button>
+                        <button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#myModal2">Cấu hình máy</button>
+                        <!-- Modal của nút Xem thêm ảnh-->
+                        <div class="modal fade" id="myModal1" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Nội dung modal-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h2 class="modal-title">Danh sách ảnh</h2>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Hiện tại chưa có nhiều ảnh cho sản phẩm</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal của nút Xem cấu hình-->
+                        <div class="modal fade" id="myModal2" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Nội dung modal-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h3 class="modal-title">Cấu hình sản phẩm: @item.TENMAY @item.MODEL</h3>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        @foreach (var item2 in ViewBag.LK) {
+                                            <dl class="dl-horizontal">
+                                            @if (item2.TENLOAI == "LCD")
+                                               {<dt>Màn hình (LCD):</dt>                                           
+                                                <dd> @item2.TENLK;</dd>}
+                                        
+                                            @if (item2.TENLOAI == "CPU")
+                                                {<dt>Bộ xử lý (CPU):</dt>                                            
+                                                <dd>@item2.TENLK;</dd>}
+                                            @if (item2.TENLOAI == "RAM")
+                                                {<dt>Bộ nhớ Ram:</dt>                                           
+                                                <dd>@item2.TENLK</dd>}
+
+                                           @if (item2.TENLOAI == "HDD")
+                                                {<dt>Ổ cứng HDD:</dt>                                            
+                                                <dd>@item2.TENLK</dd>}
+
+                                           @if (item2.TENLOAI == "OS")
+                                                {<dt>Hệ điều hành (OS):</dt>
+                                                <dd>@item2.TENLK</dd>}
+
+                                           @if (item2.TENLOAI == "ODD")
+                                                {<dt>Đĩa quang (ODD): </dt>                                         
+                                                <dd>@item2.TENLK</dd>}
+                                            
+                                           @if (item2.TENLOAI == "Lan/Wireless")
+                                                {<dt>Card mạng (Lan/Wireless):</dt>                                           
+                                                <dd>@item2.TENLK</dd>}
+                                            
+                                           @if (item2.TENLOAI == "BlueTooth")
+                                                {<dt>BlueTooth:</dt>
+                                                <dd>@item2.TENLK</dd>}
+                                            
+                                           @if (item2.TENLOAI == "Cardreader")
+                                                {<dt>Cardreader:</dt>                                                                                       
+                                                <dd>@item2.TENLK</dd>}                                            
+
+                                           @if (item2.TENLOAI == "Camera")
+                                                {<dt>Camera:</dt>                                            
+                                                <dd>@item2.TENLK</dd>}
+                                            
+                                            @if (item2.TENLOAI == "Fingerprint")
+                                                {<dt>Fingerprint:</dt>                                          
+                                                <dd>@item2.TENLK</dd>}
+                                            
+                                            @if (item2.TENLOAI == "Pin/ Adapter")
+                                                {<dt>Pin/ Adapter:</dt>                                          
+                                                <dd>@item2.TENLK</dd>}                                           
+                                        </dl>
+                                                    }
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </td>
+                    <th class="col-md-1">Tên máy:</th>
+                    <td class="col-md-2"><p style="color:blue">@item.TENMAY</p></td>
+                    <th class="col-md-1">Nhà phân phối:</th>
+                    <td class="col-md-1">@item.NHAPHANPHOI.TENNPP</td>
+                    <th class="col-md-1">Số lượng:</th>
+                    <td class="col-md-1">@item.SOLUONG</td>
+                    <th class="col-md-1">Giá niêm yết (đ):</th>
+                    <td class="col-md-1">@item.GIA</td>
+                </tr>
+                <tr>
+                    <th>Mã hiệu:</th>
+                    <td class="col-md-2"><p style="color:blue">@item.MODEL</p></td>
+                    <th>Hãng sản xuất:</th>
+                    <td>@item.HANGSX.TENHSX</td>
+                    <th>Bảo hành (tháng):</th>
+                    <td>@item.THOIHANBAOHANH</td>
+                    <th>Giá khuyến mãi:</th>
+                    <td>@item.GIAKHUYENMAI</td>
+                </tr>
+
+                <tr>
+                    <th >Mô tả chi tiết:</th>
+                    <td colspan="7">@item.DETAIL</td>
+                </tr>
+}
         </table>
+
     </div>
     <div class="form-group box-footer">
         <div class="col-md-offset-3 col-md-9">
             <span>
-                <input type="submit" value="Cập nhật" class="btn btn-primary btn" /> &nbsp &nbsp
+                <button type="button" onclick="location.href=' @Url.Action("Edit", "Sanpham", new { id = ID })'" class="btn btn-primary">Cập nhật</button>
                 <a href="/Admin/Sanpham/Index"><input class="btn btn-default" type="button" value="Trở về" /></a>
             </span>
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+

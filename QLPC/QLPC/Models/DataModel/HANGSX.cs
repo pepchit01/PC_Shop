@@ -16,7 +16,7 @@
         }
 
         [Key]
-        [Display(Name = "Mã hãng sản xuất")]
+        [Display(Name = "ID")]
         public int MAHSX { get; set; }
 
         [StringLength(100)]

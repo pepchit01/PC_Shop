@@ -33,12 +33,15 @@ namespace QLPC.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SANPHAM sANPHAM = db.sanpham.Find(id);
+            var sANPHAM = db.sanpham.Include(s => s.HANGSX).Include(s => s.NHAPHANPHOI).Where(x => x.SERIAL.Equals(id));
+            var lINHKIEN = db.linhkien.Include(s => s.SANPHAM).Where(x => x.SERIAL == id).OrderBy(x=>x.TENLOAI);
             if (sANPHAM == null)
             {
                 return HttpNotFound();
             }
-            return View(sANPHAM);
+            ViewBag.SP = sANPHAM.ToList();
+            ViewBag.LK = lINHKIEN.ToList();
+            return View();
         }
 
         // GET: Admin/Sanpham/Create
