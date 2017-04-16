@@ -179,6 +179,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BussinessModel\SanPhamStore.cs" />
     <Compile Include="Models\DataModel\BAOHANH.cs" />
     <Compile Include="Models\DataModel\COMMENT.cs" />
     <Compile Include="Models\DataModel\HANGSX.cs" />
@@ -202,13 +203,18 @@
     </Content>
     <Content Include="Areas\Admin\Content\imagePC\Acer.jpg" />
     <Content Include="Areas\Admin\Content\imagePC\asus.jpg" />
+    <Content Include="Areas\Admin\Content\imagePC\compaq.jpg" />
     <Content Include="Areas\Admin\Content\imagePC\dell.jpg" />
     <Content Include="Areas\Admin\Content\imagePC\hp.jpg" />
     <Content Include="Areas\Admin\Content\imagePC\lenovo.jpg" />
     <Content Include="Areas\Admin\Content\imagePC\macbook.jpg" />
     <Content Include="Areas\Admin\Content\imagePC\Vaio.jpg" />
+    <Content Include="Areas\Admin\Content\logo\logo.png" />
+    <Content Include="Areas\Admin\Content\logo\logo1.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\Index.css" />
+    <Content Include="Content\js\Index.js" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -275,12 +281,16 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\SanPhamTheoHang.cshtml" />
+    <Content Include="Views\Home\ReviewProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Content\bootstrap\" />
     <Folder Include="Areas\Admin\Content\dist\" />
     <Folder Include="Areas\Admin\Content\plugins\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Content\font\" />
+    <Folder Include="Content\images\" />
     <Folder Include="Models\ViewModel\" />
   </ItemGroup>
   <ItemGroup>

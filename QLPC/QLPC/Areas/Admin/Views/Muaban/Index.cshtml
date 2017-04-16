@@ -1,0 +1,107 @@
+﻿@model IEnumerable<QLPC.Models.DataModel.MUABAN>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@using PagedList.Mvc;
+@using PagedList;
+
+
+
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h2>Danh sách mua bán sản phẩm</h2>
+    </div>
+    <a href="/Admin/Nhaphanphoi/Create"><input class="btn btn-primary" type="button" value="Thêm mới đơn hàng" /></a>
+    <table class="table table-responsive table-hover table-bordered table-condensed ">
+        <tr class="info">
+            <th>
+                @Html.DisplayNameFor(model => model.MAMB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KHACHHANG.TENKH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SANPHAM.TENMAY )
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NGAYMUA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SOLUONG)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.THANHTOAN)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr class="active">
+                <td>
+                    @Html.DisplayFor(modelItem => item.MAMB)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KHACHHANG.TENKH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SANPHAM.TENMAY)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NGAYMUA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SOLUONG)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.THANHTOAN)
+                </td>
+                <td class="btn-group">
+                    @Html.ActionLink(" ", "Edit", new { id = item.MAMB }, new { @class = "btn btn-primary glyphicon glyphicon-edit", data_toggle = "tooltip", title = "Cập nhật" })
+                    @Html.ActionLink(" ", "Details", new { id = item.MAMB }, new { @class = "btn btn-primary glyphicon glyphicon-list-alt ", data_toggle = "tooltip", title = "Xem" })
+                    @*@Html.ActionLink(" ", "Delete", new { id = item.MAMB }, new { @class = "btn btn-primary glyphicon glyphicon-remove-sign disabled", data_toggle = "tooltip", title = "Xóa", @onclick = "return confirm('Nhà phân phối này sẽ được xóa khỏi danh dách! Bạn có muốn xóa?');" })*@ 
+                    <button type="button" class="btn btn-primary glyphicon glyphicon-remove-sign" data-toggle="modal" title="Xóa" data-target="#myModal1"  data_toggle = "tooltip"></button>                
+                     <!--Bắt đầu modal-->
+                     <div class="modal fade" id="myModal1" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h3 class="modal-title">Xác nhận</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <h4 style="color:red">Bạn có chắc muốn xóa giao dịch này? </h4>
+                                </div>
+                                <div class="modal-footer">
+                                    @Html.ActionLink("Xóa", "Delete", new { id = item.MAMB }, new { @class = "btn btn-danger" })
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--Kết thúc modal-->
+                </td>
+            </tr>
+        }
+    </table>
+    <div class="box-footer">
+        @Html.PagedListPager((IPagedList)ViewBag.onePageOfMuaBan, page => Url.Action("Index", new { page }))
+    </div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+    $('[data_toggle="tooltip"]').tooltip();
+});
+</script>
+
+
+
+
+

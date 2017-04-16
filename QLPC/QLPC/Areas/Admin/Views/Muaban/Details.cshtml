@@ -1,0 +1,67 @@
+﻿@model QLPC.Models.DataModel.MUABAN
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MUABAN</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KHACHHANG.TENKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KHACHHANG.TENKH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SANPHAM.TENMAY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SANPHAM.TENMAY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NGAYMUA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYMUA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SOTIEN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOTIEN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SOLUONG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOLUONG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.THANHTOAN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THANHTOAN)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MAMB }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

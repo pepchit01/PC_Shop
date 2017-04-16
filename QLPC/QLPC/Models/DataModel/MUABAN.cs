@@ -10,7 +10,7 @@
     public partial class MUABAN
     {
         [Key]
-        [Display(Name = "Mã giao dịch")]
+        [Display(Name = "ID")]
         public long MAMB { get; set; }
 
         [Required]
@@ -24,14 +24,14 @@
         public string MAKH { get; set; }
 
         [Column(TypeName = "date")]
-        [Display(Name = "Ngày mua sản phẩm")]
+        [Display(Name = "Ngày mua")]
         [DataType(DataType.Date)]
         public DateTime? NGAYMUA { get; set; }
 
         [Display(Name = "Số tiền")]
         public decimal? SOTIEN { get; set; }
 
-        [Display(Name = "Số lượng sản phẩm")]
+        [Display(Name = "Số lượng")]
         public int? SOLUONG { get; set; }
 
         [Display(Name = "Đã thanh toán")]

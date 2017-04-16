@@ -1,0 +1,49 @@
+       <div class="slider" style="background-color:lightcyan">
+            <div id="slider" style="background-color:lightcyan">
+                <div id="mover" style="background-color:lightcyan">
+                    <div id="slide-1" class="slide" style="background-color:lightcyan">
+                        <div class="slider-img">
+                            <a href=""><img src="/Content/images/feature-pic1.jpg" alt="learn more" /></a>
+                        </div>
+                        <div class="slider-text">
+                            <h1>Big<br><span>SALE OFF</span></h1>
+                            <h2>Gi?m d?n 20%</h2>
+                            <div class="features_list">
+                                <h4>Tung b?ng khai truong chi nhánh m?i</h4>
+                            </div>
+                            <a href="#" class="button">Xem ngay</a>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="slide" style="background-color:lightcyan">
+                        <div style="margin-left:50px" class="slider-text">
+                            <h1>Thanh lý<br><span>Hàng T?n</span></h1>
+                            <h2>Gi?m t?i 40%</h2>
+                            <div class="features_list">
+                                <h4>Hàng t?n nhung ch?t lu?ng t?t </h4>
+                            </div>
+                            <a href="#" class="button">Xem ngay</a>
+                        </div>
+                        <div class="slider-img">
+                            <a href="#"><img src="/Content/images/slide-2-image.jpg" alt="learn more" /></a>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="slide" style="background-color:lightcyan">
+                        <div class="slider-img" style="margin-left:80px">
+                            <a href="#"><img src="/Content/images/slide-3-image.jpg" alt="learn more" /></a>
+                        </div>
+                        <div class="slider-text">
+                            <h1>Khuy?n mãi <br>l?n!</h1>
+                            <h2>T?ng b? ph? ki?n 5 món</h2>
+                            <div class="features_list">
+                                <h4>Chào tháng m?i rinh quà v?</h4>
+                            </div>
+                            <a href="#" class="button">Xem ngay</a>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>

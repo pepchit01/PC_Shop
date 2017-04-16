@@ -1,0 +1,257 @@
+﻿
+@{
+    ViewBag.Title = "ReviewProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="main">
+    <div class="content">
+        <div class="content_top">
+            <div class="back-links">
+                <p><a href="/Home/Index">Trang chủ</a> > <a href="#">@ViewBag.sanpham.TENMAY  @ViewBag.sanpham.MODEL</a></p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="section group">
+            <div class="cont-desc span_1_of_2">
+                <div class="product-details" >
+                    <div class="grid images_3_of_2">
+                        <div id="container">
+                            <div id="products_example">
+                                <div id="products">
+                                    <div >
+                                        <img id="myImg1" width="320" height="240" alt="Hình ảnh sản phẩm" src="@ViewBag.sanpham.IMAGE" />
+                                        <div id="myModal3" class="modal"><!--Modal-->
+                                            <span  style="color:#f9f4f4;font-size:60px" class="close">&times;</span>
+                                            <img class="modal-content3" id="img01">
+                                            <div id="caption"></div>
+                                        </div>  
+                                        <script>
+
+                                            var modal = document.getElementById('myModal3');
+
+                                            var img = document.getElementById('myImg1');
+                                            var modalImg = document.getElementById("img01");
+                                            var captionText = document.getElementById("caption");
+                                            img.onclick = function () {
+                                                modal.style.display = "block";
+                                                modalImg.src = this.src;
+                                                captionText.innerHTML = this.alt;
+                                            }
+                                            var span = document.getElementsByClassName("close")[0];
+
+                                            span.onclick = function () {
+                                                modal.style.display = "none";
+                                            }
+
+                                        </script>                                   
+                                    </div>
+                                    <ul class="pagination">
+                                        <li><a ><img src="@ViewBag.sanpham.IMAGE" onclick="openModal();currentSlide(1)" class="hover-shadow cursor4" /></a></li>
+                                        <li><a ><img src="@ViewBag.sanpham.IMAGE" onclick="openModal();currentSlide(2)" class="hover-shadow cursor4" /></a></li>
+                                        <li><a ><img src="@ViewBag.sanpham.IMAGE" onclick="openModal();currentSlide(3)" class="hover-shadow cursor4" /></a></li>
+                                        <li><a ><img src="@ViewBag.sanpham.IMAGE" onclick="openModal();currentSlide(4)" class="hover-shadow cursor4" /></a></li>
+                                    </ul>
+                                    <div id="myModal4" class="modal4">
+                                        <span class="close4 cursor4" onclick="closeModal()">&times;</span>
+                                        <div class="modal-content4">
+
+                                            <div class="mySlides">
+                                                <div class="numbertext" style="color:#B81D22">1 / 4</div>
+                                                <img src="@ViewBag.sanpham.IMAGE" style="width:100%">
+                                            </div>
+
+                                            <div class="mySlides">
+                                                <div class="numbertext" style="color:#B81D22">2 / 4</div>
+                                                <img src="@ViewBag.sanpham.IMAGE" style="width:100%">
+                                            </div>
+
+                                            <div class="mySlides">
+                                                <div class="numbertext" style="color:#B81D22">3 / 4</div>
+                                                <img src="@ViewBag.sanpham.IMAGE" style="width:100%">
+                                            </div>
+
+                                            <div class="mySlides">
+                                                <div class="numbertext" style="color:#B81D22">4 / 4</div>
+                                                <img src="@ViewBag.sanpham.IMAGE" style="width:100%">
+                                            </div>
+
+                                            <a class="prev4" onclick="plusSlides(-1)">&#10094;</a>
+                                            <a class="next4" onclick="plusSlides(1)">&#10095;</a>
+
+                                            <div class="caption-container4">
+                                                <p id="caption4"></p>
+                                            </div>
+                                        </div>
+                                        <script>
+                                               function openModal() {
+                                                        document.getElementById('myModal4').style.display = "block";
+                                                                    }
+
+                                               function closeModal() {
+                                                        document.getElementById('myModal4').style.display = "none";
+                                                                     }
+
+                                               var slideIndex = 1;
+                                                       showSlides(slideIndex);
+
+                                               function plusSlides(n) {
+                                                        showSlides(slideIndex += n);
+                                                                      }
+
+                                               function currentSlide(n) {
+                                                        showSlides(slideIndex = n);
+                                                                        }
+
+                                               function showSlides(n) {
+                                                        var i;
+                                                        var slides = document.getElementsByClassName("mySlides");
+                                                        var dots = document.getElementsByClassName("demo");
+                                                        var captionText = document.getElementById("caption4");
+                                                         if (n > slides.length) {slideIndex = 1}
+                                                        if (n < 1) {slideIndex = slides.length}
+                                                         for (i = 0; i < slides.length; i++) {
+                                                         slides[i].style.display = "none";
+                                                                       }
+                                                        for (i = 0; i < dots.length; i++) {
+                                                        dots[i].className = dots[i].className.replace(" active", "");
+                                                                        }
+                                                        slides[slideIndex-1].style.display = "block";
+                                                         dots[slideIndex-1].className += " active";
+                                                         captionText.innerHTML = dots[slideIndex-1].alt;
+                                                          }
+                                        </script>
+
+                                    </div>                                        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="desc span_3_of_2">
+                        <h3 style="font-style:inherit">Tên sản phẩm:</h3>
+                        <p style="font-size:20px">@ViewBag.sanpham.TENMAY  @ViewBag.sanpham.MODEL </p>
+                        <div class="price">
+                            <h3>Giá bán:</h3><p><span>@ViewBag.sanpham.GIA đ</span></p>
+                        </div>
+                        <div style="font-style:italic"> Sản phẩm được bảo hành <b style="color:red">@ViewBag.sanpham.THOIHANBAOHANH</b> tháng</div>
+                        <div class="share-desc">
+                            <div class="share">
+                                <p>Chia sẻ :</p>                              
+                                    <a href="#" class="fa fa-facebook"></a>
+                                    <a href="#" class="fa fa-twitter"></a>                               
+                            </div>
+                            <div class="button"><span><a href="#">Cho vào giỏ</a></span></div>
+                            <div class="clear"></div>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="container" style="z-index:0; margin-top:30px">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#home">Cấu hình</a></li>
+                        <li><a data-toggle="tab" href="#menu1">Chi tiết</a></li>
+                        <li><a data-toggle="tab" href="#menu2">Đánh giá</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane fade in active">
+                            <h4>Thông số cấu hình chi tiết: </h4>
+                           <table class="table table-condensed">
+                               @foreach(var item in ViewBag.cauhinh){
+                               <tr>
+                                   <td class="col-md-6">@item.TENLOAI</td>
+                                   <td class="col-md-6">@item.TENLK</td>
+                               </tr>
+                                   }
+                           </table>
+                        </div>
+
+                        <div id="menu1" class="tab-pane fade">
+                            <h4>Mô tả chi tiết sản phẩm:</h4>
+                            <p>@ViewBag.sanpham.DETAIL</p>
+                            <p>Thông tin sẽ được cập nhật sau.</p>
+                        </div>
+
+                        <div id="menu2" class="tab-pane fade">
+                            <h4>Đánh giá sản phẩm: </h4>
+                            <ul>
+                                <li>Rating :<a href="#"><img src="/Content/images/quality-rating.png" alt="" /></a></li>
+                            </ul>
+                            <div class="your-review">
+                                <p style="color:darkgray">Người dùng có thể đánh giá sản phẩm sau khi mua.</p>
+                                <h3>Hãy đánh giá sản phẩm</h3>
+                                <form>
+                                    <div>
+                                        <span><label>Đánh giá của bạn<span class="red">*</span></label></span>
+                                        <span><input type="text" value=""></span>
+                                    </div>
+                                    <div>
+                                        <span><label>Bình luận<span class="red">*</span></label></span>
+                                        <span><textarea> </textarea></span>
+                                    </div>
+                                    <div>
+                                        <span><input type="submit" value="Đánh giá"></span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content_bottom">
+                    <div class="heading">
+                        <h3>Sản phẩm gợi ý:</h3>
+                    </div>
+                    <div class="see">
+                        <p><a href="#">Xem tất cả</a></p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="section group">
+                    <div class="grid_1_of_4 images_1_of_4">
+                        <a href="#"><img src="" alt=""></a>
+                        <div class="price" style="border:none">
+                            <div class="add-cart" style="float:none">
+                                <h4><a href="#">Cho vào giỏ</a></h4>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rightsidebar span_3_of_1" style="margin-left:30px">
+                <ul>
+                    <li><h3 style="margin-left:3px">HÃNG SẢN XUẤT</h3></li>
+                    <li><a id="Asus" href="/Home/SanPhamTheoHang/Asus">ASUS</a></li>
+                    <li><a href="/Home/SanPhamTheoHang/Acer">ACER</a></li>
+                    <li><a href="/Home/SanPhamTheoHang/HP">HP</a></li>
+                    <li><a href="/Home/SanPhamTheoHang/Apple">APPLE</a></li>
+                    <li><a href="/Home/SanPhamTheoHang/Lenovo">LENOVO</a></li>
+                    <li><a href="/Home/SanPhamTheoHang/Dell">DELL</a></li>
+                    <li><a href="/Home/SanPhamTheoHang/Sony">SONY</a></li>
+                    <li><a href="/Home/SanPhamTheoHang/Samsung">SAMSUNG</a></li>
+                    <li><a href="/Home/SanPhamTheoHang/Toshiba">TOSHIBA</a></li>
+                    <li><a href="/Home/SanPhamTheoHang/Intel">INTEL</a></li>
+                    <li><a href="/Home/SanPhamTheoHang/MSI">MSI</a></li>
+                    <li><a href="/Home/SanPhamTheoHang/Gigabyte">GigaByte</a></li>
+                    <li><a href="/Home/SanPhamTheoHang/Nec">Nec</a></li>
+                    <li><a href="/Home/SanPhamTheoHang/Nec">HÃNG KHÁC</a></li>
+                </ul>
+                <div class="subscribe">
+                    <h2>Nhận thông báo</h2>
+                    <p>Sản phẩm Asus......</p>
+                    <div class="signup">
+                        <form>
+                            <input type="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') { this.value = 'E-mail address'; }"><input type="submit" value="Sign up">
+                        </form>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -10,7 +10,6 @@ namespace QLPC.Areas.Admin.Controllers
     public class HomeController : Controller
     {
         QLPCDbContext db = new QLPCDbContext();
-        private object x;
 
         // GET: Admin/Home
         public ActionResult Index()

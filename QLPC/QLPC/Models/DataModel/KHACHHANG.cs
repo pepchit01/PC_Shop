@@ -29,15 +29,16 @@
         [Display(Name = "Tên khách hàng")]
         public string TENKH { get; set; }
 
-        [Required(ErrorMessage = "Vui lòng nhập địa chỉ khách hàng")]
-        [StringLength(1000)]
-        [Display(Name = "Địa chỉ khách hàng")]
-        public string DCHIKH { get; set; }
 
         [Required(ErrorMessage = "Vui lòng nhập đúng số điện thoại")]
         [Display(Name = "Điện thoại")]
         [StringLength(12, ErrorMessage = "Số điện thoại không đúng", MinimumLength = 10)]
         public string DTHOAIKH { get; set; }
+
+        [Required(ErrorMessage = "Vui lòng nhập địa chỉ khách hàng")]
+        [StringLength(1000)]
+        [Display(Name = "Địa chỉ khách hàng")]
+        public string DCHIKH { get; set; }
 
         [StringLength(50)]
         [Display(Name = "Tỉnh")]

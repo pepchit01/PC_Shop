@@ -67,6 +67,10 @@
         [AllowHtml]
         public string DETAIL { get; set; }
 
+        [Column(TypeName = "date")]
+        [Display(Name = "Ngày nhập hàng")]
+        public DateTime? NGAYNHAP { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BAOHANH> BAOHANHs { get; set; }
 

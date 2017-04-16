@@ -1,0 +1,156 @@
+﻿
+@{
+    ViewBag.Title = "SanPhamTheoHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using PagedList.Mvc;
+@using PagedList
+<style>
+    .overlay5 {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background-color: #51504b;
+  overflow: hidden;
+  width: 100%;
+  height:0;
+  transition: .5s ease;
+  opacity:0.9;
+}
+
+.container5:hover .overlay5 {
+  bottom: 0;
+  height: 100%;
+}
+
+.text5 {
+  white-space: nowrap; 
+  color: #B81D22;
+  font-size: 20px;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+.container5 {
+  position: relative;
+}
+.btn5{
+    width:110px;
+    font-family:ambleregular; 
+    border:0;  
+}
+</style>
+<form action="/Home/FilterView" method="post">
+    <div style="background-color:rgb(245, 245, 245);height:40px;">
+        <div style="display:inline-block ; margin-top:10px; margin-left:5px">
+            <i style="color:#B81D22">Hãng sản xuất:</i>
+            <select name="hang" style="color:#B81D22" id="selecthang">
+                <option value="">Tất cả</option>
+                <option value="Asus">Asus</option>
+                <option value="Acer">Acer</option>
+                <option value="Apple">Apple</option>
+                <option value="Hp">Hp</option>
+                <option value="Lenovo">Lenovo</option>
+                <option value="Dell">Dell</option>
+                <option value="Sony">Sony</option>
+                <option value="Samsung">Samsung</option>
+                <option value="Toshiba">Toshiba</option>
+                <option value="MSI">MSI</option>
+                <option value="Nec">Nec</option>
+            </select>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <i style="color:#B81D22">Giá:</i>
+            <select name="gia" style="color:#B81D22" id="selectgia">
+                <option value="0">Tất cả</option>
+                <option value="20">Trên 20 triệu</option>
+                <option value="15">Dưới 15 triệu</option>
+                <option value="10">Dưới 10 triệu</option>
+                <option value="8">Dưới 8 triệu</option>
+            </select>
+            <script>
+                $(document).ready(function () {
+                    $("#selecthang").val("@ViewBag.Hang")
+                    $("#selectgia").val("@ViewBag.Gia")
+                });
+            </script>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <i style="color:#B81D22">Giá giảm dần:</i>&nbsp;&nbsp;<input type="radio"  name="sapxep" value="1" checked>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <i style="color:#B81D22">Giá tăng dần:</i>&nbsp;&nbsp;<input type="radio"  name="sapxep"  value="0" >
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button id="btnloc" type="submit" style="color:#B81D22;">Xem</button>
+        </div>
+    </div>
+</form>
+<br>
+    <div class="content_top">
+        <div class="heading">
+            <h4>Cửa hàng có <b>@ViewBag.SoMay</b> sản phẩm <b>@ViewBag.Hang</b></h4>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="section group">
+        <div style="width:2px"></div>
+        @foreach (var item in ViewBag.sanpham)
+        {
+            <div class="grid_1_of_4 images_1_of_4" style="height:270px; width:250px;">
+                <div class="container5">
+                    <img class="image5" style="height:145px" src="@item.IMAGE" alt="" />
+                    <div class="overlay5">
+                        <div class="text5">
+                            <a href="/Home/ReviewProduct/@item.MODEL"><input type="button" class="btn5 btn-info" value="Chi tiết" style="margin-left:4px"></a> <br>
+                            <a href="#"><input type="button" class="btn5 btn-danger" style="margin-top:2px" value="Mua ngay"></a>
+                        </div>
+                    </div>
+                </div>
+                <a href="/Home/ReviewProduct/@item.MODEL"><h2 style="height:40px ;margin-top:5px">@item.TENMAY @item.MODEL</h2></a>
+                <div class="price-details">
+                    <div class="price-number">
+                        <p><span class="rupees">@item.GIA <b>đ</b></span></p>
+                    </div>
+                    <div class="add-cart">
+                        <h4 class="gio"><a href="#">Cho vào giỏ</a></h4>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>   }
+    </div>
+
+        <div>
+            @Html.PagedListPager((IPagedList)ViewBag.sanpham, page => Url.Action("SanPhamTheoHang", new { page }))
+        </div>
+   
+
+    @*<div class="content_bottom">
+        <div class="heading">
+            <h3>Sản phẩm gợi ý</h3>
+        </div>
+        <div class="see">
+            <p><a href="#">Xem tất cả</a></p>
+        </div>
+        <div class="clear"></div>
+    </div>
+        <div class="section group">
+            <div style="width:2px"></div>
+            @foreach (var item in ViewBag.pcGoiY)
+            {
+                <div class="grid_1_of_4 images_1_of_4" style="height:270px; width:250px">
+                    <a href="/Home/ReviewProduct/@item.MODEL"><img style="height:145px" src="@item.IMAGE" alt="" /></a>
+                    <h2 style="height:40px">@item.TENMAY @item.MODEL</h2>
+                    <div class="price-details">
+                        <div class="price-number">
+                            <p><span class="rupees">@item.GIA <b>đ</b></span></p>
+                        </div>
+                        <div class="add-cart">
+                            <h4><a href="preview.html">Cho vào giỏ</a></h4>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>   }
+        </div>*@
+
+
