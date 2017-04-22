@@ -49,9 +49,10 @@
         [DataType(DataType.Date)]
         public DateTime? NGAYTRA { get; set; }
 
-        [StringLength(10)]
         [Display(Name = "Người gửi máy")]
-        public string MAKH { get; set; }
+        public int? MAKH { get; set; }
+
+        public virtual KHACHHANG KHACHHANG { get; set; }
 
         public virtual NHANVIEN NHANVIEN { get; set; }
 

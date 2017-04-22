@@ -174,6 +174,7 @@
     <Compile Include="Areas\Admin\Controllers\NhanvienController.cs" />
     <Compile Include="Areas\Admin\Controllers\NhaphanphoiController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanphamController.cs" />
+    <Compile Include="Models\BussinessModel\GoiY.cs" />
     <Compile Include="Models\BussinessModel\QLPCDbContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -181,6 +182,7 @@
     </Compile>
     <Compile Include="Models\BussinessModel\SanPhamStore.cs" />
     <Compile Include="Models\DataModel\BAOHANH.cs" />
+    <Compile Include="Models\DataModel\COLK.cs" />
     <Compile Include="Models\DataModel\COMMENT.cs" />
     <Compile Include="Models\DataModel\HANGSX.cs" />
     <Compile Include="Models\DataModel\KHACHHANG.cs" />

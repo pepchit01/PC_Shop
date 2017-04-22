@@ -113,7 +113,13 @@
                         <p><span class="rupees">@item.GIA <b>đ</b></span></p>
                     </div>
                     <div class="add-cart">
-                        <h4 class="gio"><a href="#">Cho vào giỏ</a></h4>
+                        <h4 class="gio">
+                            @if (Session["SDT"] != null)
+                            {<a href="#">Cho vào giỏ</a> }
+                            else
+                            { <a href="#" onclick="document.getElementById('id05').style.display='block'">Cho vào giỏ</a>}
+                        </h4>
+
                     </div>
                     <div class="clear"></div>
                 </div>

@@ -13,6 +13,7 @@ namespace QLPC.Models.DataModel
         }
 
         public virtual DbSet<BAOHANH> BAOHANHs { get; set; }
+        public virtual DbSet<COLK> COLKs { get; set; }
         public virtual DbSet<COMMENT> COMMENTs { get; set; }
         public virtual DbSet<HANGSX> HANGSXes { get; set; }
         public virtual DbSet<KHACHHANG> KHACHHANGs { get; set; }
@@ -32,18 +33,12 @@ namespace QLPC.Models.DataModel
                 .Property(e => e.SERIAL)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<BAOHANH>()
-                .Property(e => e.MAKH)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<COMMENT>()
+            modelBuilder.Entity<COLK>()
                 .Property(e => e.SERIAL)
                 .IsUnicode(false);
 
             modelBuilder.Entity<COMMENT>()
-                .Property(e => e.MAKH)
-                .IsFixedLength()
+                .Property(e => e.SERIAL)
                 .IsUnicode(false);
 
             modelBuilder.Entity<HANGSX>()
@@ -54,11 +49,6 @@ namespace QLPC.Models.DataModel
                 .HasMany(e => e.SANPHAMs)
                 .WithRequired(e => e.HANGSX)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<KHACHHANG>()
-                .Property(e => e.MAKH)
-                .IsFixedLength()
-                .IsUnicode(false);
 
             modelBuilder.Entity<KHACHHANG>()
                 .Property(e => e.DTHOAIKH)
@@ -106,11 +96,6 @@ namespace QLPC.Models.DataModel
                 .IsUnicode(false);
 
             modelBuilder.Entity<MUABAN>()
-                .Property(e => e.MAKH)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<MUABAN>()
                 .Property(e => e.SOTIEN)
                 .HasPrecision(18, 0);
 
@@ -148,14 +133,9 @@ namespace QLPC.Models.DataModel
                 .Property(e => e.SERIAL)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<RATING>()
-                .Property(e => e.MAKH)
-                .IsFixedLength()
-                .IsUnicode(false);
-
             modelBuilder.Entity<SANPHAM>()
-                 .Property(e => e.SERIAL)
-                 .IsUnicode(false);
+                .Property(e => e.SERIAL)
+                .IsUnicode(false);
 
             modelBuilder.Entity<SANPHAM>()
                 .Property(e => e.MODEL)
@@ -170,11 +150,12 @@ namespace QLPC.Models.DataModel
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<SANPHAM>()
-                .Property(e => e.DETAIL)
-                .IsUnicode(false);
+                .HasMany(e => e.COMMENTs)
+                .WithRequired(e => e.SANPHAM)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<SANPHAM>()
-                .HasMany(e => e.COMMENTs)
+                .HasMany(e => e.LINHKIENs)
                 .WithRequired(e => e.SANPHAM)
                 .WillCascadeOnDelete(false);
 
@@ -186,22 +167,26 @@ namespace QLPC.Models.DataModel
             modelBuilder.Entity<SANPHAM>()
                 .HasMany(e => e.RATINGs)
                 .WithRequired(e => e.SANPHAM)
+                .HasForeignKey(e => e.SERIAL)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<SANPHAM>()
-                .HasMany(e => e.LINHKIENs)
-                .WithRequired(e => e.SANPHAM)
+                .HasMany(e => e.RATINGs1)
+                .WithRequired(e => e.SANPHAM1)
+                .HasForeignKey(e => e.SERIAL)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<SANPHAM>()
                 .HasMany(e => e.VIEWs)
                 .WithRequired(e => e.SANPHAM)
+                .HasForeignKey(e => e.SERIAL)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<VIEW>()
-                .Property(e => e.MAKH)
-                .IsFixedLength()
-                .IsUnicode(false);
+            modelBuilder.Entity<SANPHAM>()
+                .HasMany(e => e.VIEWs1)
+                .WithRequired(e => e.SANPHAM1)
+                .HasForeignKey(e => e.SERIAL)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<VIEW>()
                 .Property(e => e.SERIAL)

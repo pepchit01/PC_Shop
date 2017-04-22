@@ -47,9 +47,15 @@
                 </div>
                 <div class="account_desc">
                     <ul>
+                        @if (Session["SDT"] == null)
+                        {
                         <li ><a style="color:#B81D22">Chưa đăng nhập</a></li>
-                        <li><p class="glyphicon glyphicon-user"></p><a href="#" >Tài khoản</a></li>
-                        <li><a href="#">Log out</a></li>
+                        }
+                        else
+                        {
+                        <li><p class="glyphicon glyphicon-user"></p><a href="#" >@Session["TenKhachHang"]</a></li>
+                        <li><a href="/Home/DangXuat">Log out</a></li>
+                        }
                     </ul>
                 </div>
                 <div class="clear"></div>
@@ -61,7 +67,7 @@
                 <div class="cart">
                     <p>
                         Chào mừng bạn đã đến cửa hàng online của chúng tôi! <span>Giỏ:</span><div id="dd" class="wrapper-dropdown-2">
-                            0 item(s) - $0.00
+                            <b>@Session["SoHangGioHang"]</b> item(s) 
                             <ul class="dropdown">
                                 <li>Chưa có hàng</li>
                             </ul>
@@ -70,30 +76,30 @@
                 </div>
                 <script type="text/javascript">
                     function DropDown(el) {
-                        this.dd = el;
-                        this.initEvents();
-                    }
-                    DropDown.prototype = {
+                                            this.dd = el;
+                                            this.initEvents();
+                                        }
+                                        DropDown.prototype = {
                         initEvents: function () {
-                            var obj = this;
+                                            var obj = this;
 
-                            obj.dd.on('click', function (event) {
+                                            obj.dd.on('click', function (event) {
                                 $(this).toggleClass('active');
                                 event.stopPropagation();
-                            });
+                                        });
                         }
-                    }
+                                }
 
                     $(function () {
 
-                        var dd = new DropDown($('#dd'));
+                                    var dd = new DropDown($('#dd'));
 
                         $(document).click(function () {
                             // all dropdowns
                             $('.wrapper-dropdown-2').removeClass('active');
-                        });
+                                    });
 
-                    });
+                                });
 
     </script>
                 <div class="clear"></div>
@@ -118,6 +124,8 @@
             @RenderBody()
         </div>
   </div>
+    @if (Session["SDT"] == null)
+    {
     <div id="mySidenav" class="sidenav">
         <a href="#" id="Regris" onclick="document.getElementById('id06').style.display='block'"><p class="glyphicon glyphicon-plus-sign"></p>&nbsp;&nbsp;Đăng kí</a>
         <a href="#" id="Login" onclick="document.getElementById('id05').style.display='block'"><p class="glyphicon glyphicon-log-in"></p>&nbsp;&nbsp;Đăng nhập </a>
@@ -125,21 +133,21 @@
     <!--Modal Đăng nhập-->
     <div id="id05" class="modal5">
 
-        <form class="modal-content5 animate" action="/action_page.php">
+        <form class="modal-content5 animate" action="/Home/DangNhap">
             <div class="imgcontainer">
                 <span onclick="document.getElementById('id05').style.display='none'" class="close5" title="Close Modal">&times;</span>
                 <img src="~/Content/images/user.png" alt="Avatar" class="avatar">
             </div>
-
+            <p style="color:red">@ViewBag.Error</p>
             <div class="container5">
                 <div style="margin-left:10%">
                 <label><b>Số điện thoại</b></label>
-                <input class="input5" type="text" placeholder="Số điện thoại" name="uname" required>
+                <input class="input5" type="text" placeholder="Số điện thoại" name="uname2" required>
                 </div>
                 <br>
                 <div style="margin-left:15%">
                 <label><b>Mật khẩu</b></label>
-                <input class="input5" type="password" placeholder="Nhập mật khẩu" name="psw" required>
+                <input class="input5" type="password" placeholder="Nhập mật khẩu" name="psw2" required>
                 </div>
                 <button type="submit" class="button5">Đăng nhập</button>
                 <input style="margin-left:5%" type="checkbox" > Ghi nhớ tôi
@@ -152,36 +160,52 @@
         </form>
     </div>
     <script>
-           var modal = document.getElementById('id05');
+           var modal1 = document.getElementById('id05');
            window.onclick = function(event) {
-           if (event.target == modal) {
-           modal.style.display = "none";
+           if (event.target == modal1) {
+           modal1.style.display = "none";
            }
-         }
+           }
+           if(@ViewBag.Show==1){
+               modal1.style.display = "block";
+           }
+
     </script>
 
     <!--Modal đăng kí-->
     <div id="id06" class="modal6">
-        <span onclick="document.getElementById('id06').style.display='none'" class="close6" title="Close Modal">×</span>
-        <form class="modal-content6 " action="/action_page.php">
-            ggggggggggggggggggggggggggggggggggggggggggggghhhhhhhhhhhhhhhhhhhhhhhh
-
-                <div style="width:100%">
-                    <label  >Họ tên:</label>
-                    <input id="hoten" style="width:100%" class="form-control "  placeholder="Nhập đầy đủ họ tên">
+        <form class="modal-content6 animate6" action="/Home/DangKi">
+            <div class="imgcontainer6">
+                <span onclick="document.getElementById('id06').style.display='none'" class="close6" title="Close Modal">&times;</span>
+            </div>
+            <h1 style="color: #B81D22;font-family:ambleregular; text-align:center">Đăng kí tài khoản</h1>
+            <hr style="color:#B81D22">
+            <div class="container6">
+                <div style="margin-left:10%">
+                    <label><b>Họ và tên:</b></label>
+                    <input class="input6" style="width:500px" type="text" placeholder="Hãy nhập họ và tên" name="hoten" required>
                 </div>
-                <div >
-                    <label >Số điện thoại:</label>
-                    <input id="sdt" class="form-control"  placeholder="Nhập số điện thoại">
+                <br>
+                <div style="margin-left:4%">
+                    <label><b>Số điện thoại:</b></label>
+                    <input class="input6" style="width:500px" type="text" placeholder="Hãy số điện thoại" name="sdt" required>
                 </div>
-                <div >
-                    <label >Mật khẩu:</label>
-                    <input id="pass" class="form-control" type="password" placeholder="Nhập mật khẩu của bạn">
+                <br>
+                <div style="margin-left:10%">
+                    <label ><b>Mật khẩu:</b></label>
+                    <input class="input6"type="password" placeholder="Nhập mật khẩu" name="psw" required>
                 </div>
-                <div >
-                    <label >Địa chỉ:</label>
-                    <input id="diachi" class="form-control" placeholder="Nhập địa chỉ của bạn">
+                <br>
+                <div style="margin-left:13%">
+                    <label><b>Địa chỉ:</b></label>
+                    <input class="input6" style="width:500px" type="text" placeholder="Hãy nhập địa chỉ" name="diachi" required>
                 </div>
+                <a style="margin-left:25%">Điều lệ đăng kí tài khoản</a>
+                <div class="btn-group" style="width:100%; padding:5%;">
+                <button type="button" onclick="document.getElementById('id06').style.display='none'" class="col-sm-6 btn btn-default">Cancel</button>
+                <button type="submit" class="col-sm-6 btn btn-danger">Đăng kí</button>
+                </div>
+            </div>
 
         </form>
     </div>
@@ -193,11 +217,11 @@
             }
         }
     </script>
-
+        } 
 
 
     <hr />
-    <div class="footer">
+    <div class="footer" style="z-index:-1;">
         <div class="wrap">
             <div class="section group">
                 <div class="col_1_of_4 span_1_of_4">
@@ -248,34 +272,33 @@
 
     <button onclick="topFunction()" id="btntop" title="Go to top">^</button>
     <style>
-        #btntop{
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 30px;
-    z-index: 99;
-    border: none;
-    outline: none;
-    background-color: #B81D22;
-    color: white;
-    cursor: pointer;
-    padding: 15px;
-    border-radius: 10px;
+#btntop{
+    display:none;
+    position:fixed;
+    bottom:20px;
+    right:30px;
+    z-index:99;
+    border:none;
+    outline:none;
+    background-color:#B81D22;
+    color:white;
+    cursor:pointer;
+    padding:15px;
+    border-radius:10px;
     }
-        #btntop:hover {
-             background-color: #333333;
+#btntop:hover {
+             background-color:#333333;
                      }
-
-        .gio:hover{
-            box-shadow: 0 4px 15px 0 #c7faf2;
-            transition: 0.3s;
+.gio:hover{
+            box-shadow:0 4px 15px 0 #c7faf2;
+            transition:0.3s;
         }
-        .gio {
-            box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
-            transition: 0.3s;
+.gio {
+            box-shadow:0 2px 5px 0 rgba(0,0,0,0.2);
+            transition:0.3s;
            }
-        .imghv:hover{
-            opacity: 0.7;
+.imghv:hover{
+            opacity:0.7;
         }
     </style>
     <script>
@@ -299,5 +322,6 @@ function topFunction() {
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)
+
 </body>
 </html>

@@ -19,9 +19,8 @@
         public string SERIAL { get; set; }
 
         [Required]
-        [StringLength(10)]
         [Display(Name = "Mã khách hàng")]
-        public string MAKH { get; set; }
+        public int MAKH { get; set; }
 
         [Display(Name = "Giá trị đánh giá")]
         public int GIATRI { get; set; }
@@ -33,5 +32,7 @@
         public virtual KHACHHANG KHACHHANG { get; set; }
 
         public virtual SANPHAM SANPHAM { get; set; }
+
+        public virtual SANPHAM SANPHAM1 { get; set; }
     }
 }

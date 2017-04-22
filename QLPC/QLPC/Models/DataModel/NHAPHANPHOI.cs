@@ -20,7 +20,7 @@
         public int MANPP { get; set; }
 
         [StringLength(200)]
-        [Required(ErrorMessage ="Vui lòng nhập tên nhà phân phối")]
+        [Required(ErrorMessage = "Vui lòng nhập tên nhà phân phối")]
         [Display(Name = "Tên nhà phân phối")]
         public string TENNPP { get; set; }
 

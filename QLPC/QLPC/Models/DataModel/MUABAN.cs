@@ -18,10 +18,8 @@
         [Display(Name = "Mã sản phẩm")]
         public string SERIAL { get; set; }
 
-        [Required]
-        [StringLength(10)]
         [Display(Name = "Mã khách hàng")]
-        public string MAKH { get; set; }
+        public int MAKH { get; set; }
 
         [Column(TypeName = "date")]
         [Display(Name = "Ngày mua")]

@@ -19,30 +19,29 @@
         [Display(Name = "ID")]
         public int MANV { get; set; }
 
-        [Required(ErrorMessage ="Vui lòng nhập đầy đủ họ tên!.")]
-        [StringLength(50,ErrorMessage ="Tên có độ dài dưới 50 kí tự.")]
+        [Required(ErrorMessage = "Vui lòng nhập đầy đủ họ tên!.")]
+        [StringLength(50, ErrorMessage = "Tên có độ dài dưới 50 kí tự.")]
         [Display(Name = "Tên nhân viên")]
         public string TENNV { get; set; }
 
-        [Required(ErrorMessage ="Vui lòng nhập số điện thoại!.")]
-        [StringLength(12,ErrorMessage ="Hãy nhập đúng số điện thoại",MinimumLength =10)]
+        [Required(ErrorMessage = "Vui lòng nhập số điện thoại!.")]
+        [StringLength(12, ErrorMessage = "Hãy nhập đúng số điện thoại", MinimumLength = 10)]
         [Display(Name = "Điện thoại")]
         public string DTHOAINV { get; set; }
 
-        [Required(ErrorMessage ="Vùi lòng nhập địa chỉ!.")]
+        [Required(ErrorMessage = "Vùi lòng nhập địa chỉ!.")]
         [StringLength(1000)]
         [Display(Name = "Địa chỉ")]
         public string DCHINV { get; set; }
 
-        [Required(ErrorMessage ="Vui lòng nhập mật khẩu")]
+        [Required(ErrorMessage = "Vui lòng nhập mật khẩu")]
         [StringLength(15)]
         [Display(Name = "Mật khẩu")]
-        //[DataType(DataType.Password)]
         public string PASS { get; set; }
 
-        [Required(ErrorMessage ="Vui lòng chọn quyền cho người dùng!.")]
-        [Display(Name ="Quyền")]
-        public int GRANT { get; set; }
+        [Required(ErrorMessage = "Vui lòng chọn quyền cho người dùng!.")]
+        [Display(Name = "Quyền")]
+        public int? GRANT { get; set; }
 
         [StringLength(100)]
         [Display(Name = "Email nhân viên")]

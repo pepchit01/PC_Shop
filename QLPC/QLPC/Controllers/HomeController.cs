@@ -10,6 +10,7 @@ using QLPC.Models.BussinessModel;
 using QLPC.Models.DataModel;
 using PagedList;
 using System.Data.SqlClient;
+using System.Data.Entity.Validation;
 
 namespace QLPC.Controllers
 {
@@ -18,17 +19,16 @@ namespace QLPC.Controllers
         private QLPCDbContext db = new QLPCDbContext();
 
         public ActionResult Index() {
-            try {
-                var pcBanChays = db.Database.SqlQuery<SanPhamStore>("SP_SanPhamBanChay").ToList();
+            KHACHHANG kh = db.khachhang.First();
+            GoiY.Tim();
+
+            var pcBanChays = db.Database.SqlQuery<SanPhamStore>("SP_SanPhamBanChay").ToList();
                 ViewBag.pcBanChay = pcBanChays;
                 var pcMoiNhats = db.Database.SqlQuery<SanPhamStore>("SP_SanPhamMoi").ToList();
                 ViewBag.pcMoiNhat = pcMoiNhats;
                 return View();
-            }
-            catch
-            {
-                return View("/Shared/Error.cshtml");
-            }
+
+
 
         }
 
@@ -104,5 +104,53 @@ namespace QLPC.Controllers
             }
         }
 
+        public ActionResult DangNhap(string uname2, string psw2)
+        {
+            var khachhang = db.khachhang.SingleOrDefault(x => x.DTHOAIKH == uname2 && x.PASS == psw2);
+            if(khachhang != null)
+            {
+                Session["SDT"] = khachhang.DTHOAIKH;
+                Session["TenKhachHang"] = khachhang.TENKH;
+                Session["DiaChi"] = khachhang.DCHIKH;
+                int SoHangTrongGio= db.muaban.Where(x => x.MAKH == khachhang.MAKH).Count();
+                Session["SoHangGioHang"] = SoHangTrongGio;
+                RedirectToAction("Index");
+            }
+            ViewBag.Error = "Tài khoản mật khẩu không đúng!";
+            ViewBag.show = 1;
+            return RedirectToAction("Index"); ;
+        }
+
+        public ActionResult DangXuat()
+        {
+            Session["SDT"] = null;
+            Session["TenKhachHang"] =null;
+            Session["DiaChi"] = null;
+            return RedirectToAction("Index");
+        }
+
+
+        public ActionResult DangKi(string hoten, string sdt, string psw, string diachi)
+        {
+            try
+            {
+                KHACHHANG kh = new KHACHHANG();
+                kh.TENKH = hoten;
+                kh.DTHOAIKH = sdt;
+                kh.PASS = psw;
+                kh.DCHIKH = diachi;
+                kh.TINH = "Can Tho";
+                kh.EMAIL = "pepchit01@gmail.com";
+                db.khachhang.Add(kh);
+                db.SaveChanges();
+                ViewBag.ThongBao = "Đăng kí thành công";
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return RedirectToAction("Index");
+            }
+
+        }
     }
 }

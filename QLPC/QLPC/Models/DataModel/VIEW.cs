@@ -13,10 +13,8 @@
         [Display(Name = "Mã lượt xem")]
         public long STTVIEW { get; set; }
 
-        [Required]
         [Display(Name = "Mã khách hàng")]
-        [StringLength(10)]
-        public string MAKH { get; set; }
+        public int MAKH { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -30,5 +28,7 @@
         public virtual KHACHHANG KHACHHANG { get; set; }
 
         public virtual SANPHAM SANPHAM { get; set; }
+
+        public virtual SANPHAM SANPHAM1 { get; set; }
     }
 }

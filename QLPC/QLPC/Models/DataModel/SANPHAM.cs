@@ -15,10 +15,12 @@
         {
             BAOHANHs = new HashSet<BAOHANH>();
             COMMENTs = new HashSet<COMMENT>();
+            LINHKIENs = new HashSet<LINHKIEN>();
             MUABANs = new HashSet<MUABAN>();
             RATINGs = new HashSet<RATING>();
+            RATINGs1 = new HashSet<RATING>();
             VIEWs = new HashSet<VIEW>();
-            LINHKIENs = new HashSet<LINHKIEN>();
+            VIEWs1 = new HashSet<VIEW>();
             KHACHHANGs = new HashSet<KHACHHANG>();
         }
 
@@ -33,12 +35,12 @@
         [Display(Name = "Mã nhà phân phối")]
         public int MANPP { get; set; }
 
-        [Display(Name = "Tên máy")]
         [StringLength(50)]
+        [Display(Name = "Tên máy")]
         public string TENMAY { get; set; }
 
-        [Display(Name = "Mã hiệu (model)")]
         [StringLength(100)]
+        [Display(Name = "Mã hiệu (model)")]
         public string MODEL { get; set; }
 
         [Display(Name = "Giá niêm yết")]
@@ -61,7 +63,6 @@
         [Display(Name = "Giá khuyến mãi")]
         public decimal? GIAKHUYENMAI { get; set; }
 
-        [Column(TypeName = "text")]
         [Display(Name = "Mô tả chi tiết")]
         [DataType(DataType.MultilineText)]
         [AllowHtml]
@@ -80,6 +81,9 @@
         public virtual HANGSX HANGSX { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LINHKIEN> LINHKIENs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MUABAN> MUABANs { get; set; }
 
         public virtual NHAPHANPHOI NHAPHANPHOI { get; set; }
@@ -88,10 +92,13 @@
         public virtual ICollection<RATING> RATINGs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RATING> RATINGs1 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VIEW> VIEWs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LINHKIEN> LINHKIENs { get; set; }
+        public virtual ICollection<VIEW> VIEWs1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KHACHHANG> KHACHHANGs { get; set; }
