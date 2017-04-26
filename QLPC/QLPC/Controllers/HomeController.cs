@@ -21,18 +21,18 @@ namespace QLPC.Controllers
         public ActionResult Index() {
             KHACHHANG kh = db.khachhang.First();
 
-
+            //GoiY.Tim();
             var pcBanChays = db.Database.SqlQuery<SanPhamStore>("SP_SanPhamBanChay").ToList();
             ViewBag.pcBanChay = pcBanChays;
             var pcMoiNhats = db.Database.SqlQuery<SanPhamStore>("SP_SanPhamMoi").ToList();
             ViewBag.pcMoiNhat = pcMoiNhats;
-            if (Session["MAKH"]!=null)
+            if (Session["MAKH"] != null)
             {
-                var pcGoiY= GoiY.Tim((int)Session["MAKH"]).ToList();
+                var pcGoiY = GoiY.TimTheoMuaBan((int)Session["MAKH"]).ToList();
                 ViewBag.pcGoiY = pcGoiY;
                 ViewBag.Count = pcGoiY.Count();
             }
-               
+
             return View();
 
 
