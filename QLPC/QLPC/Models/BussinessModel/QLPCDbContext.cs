@@ -19,6 +19,7 @@ namespace QLPC.Models.BussinessModel
         public DbSet<COMMENT> comment { get; set; }
         public DbSet<HANGSX>  hangsanxuat{ get; set; }
         public DbSet<KHACHHANG> khachhang { get; set; }
+        public DbSet<GIOHANG> giohang { get; set; }
         public DbSet<LINHKIEN> linhkien { get; set; }
         public DbSet<LOAILK> loailk { get; set; }
         public DbSet<MUABAN> muaban { get; set; }

@@ -14,6 +14,7 @@
         {
             BAOHANHs = new HashSet<BAOHANH>();
             COMMENTs = new HashSet<COMMENT>();
+            GIOHANGs = new HashSet<GIOHANG>();
             MUABANs = new HashSet<MUABAN>();
             RATINGs = new HashSet<RATING>();
             VIEWs = new HashSet<VIEW>();
@@ -67,6 +68,9 @@
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VIEW> VIEWs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GIOHANG> GIOHANGs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SANPHAM> SANPHAMs { get; set; }

@@ -16,6 +16,7 @@ namespace QLPC.Models.DataModel
         public virtual DbSet<COLK> COLKs { get; set; }
         public virtual DbSet<COMMENT> COMMENTs { get; set; }
         public virtual DbSet<HANGSX> HANGSXes { get; set; }
+        public virtual DbSet<GIOHANG> GIOHANGs { get; set; }
         public virtual DbSet<KHACHHANG> KHACHHANGs { get; set; }
         public virtual DbSet<LINHKIEN> LINHKIENs { get; set; }
         public virtual DbSet<LOAILK> LOAILKs { get; set; }
@@ -39,6 +40,10 @@ namespace QLPC.Models.DataModel
 
             modelBuilder.Entity<COMMENT>()
                 .Property(e => e.SERIAL)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<GIOHANG>()
+                .Property(e => e.MODEL)
                 .IsUnicode(false);
 
             modelBuilder.Entity<HANGSX>()
@@ -87,6 +92,15 @@ namespace QLPC.Models.DataModel
                 .WithMany(e => e.KHACHHANGs)
                 .Map(m => m.ToTable("GIOHANG").MapLeftKey("MAKH").MapRightKey("SERIAL"));
 
+            modelBuilder.Entity<KHACHHANG>()
+                .HasMany(e => e.GIOHANGs)
+                .WithRequired(e => e.KHACHHANG)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<GIOHANG>()
+                .Property(e => e.MODEL)
+                .IsUnicode(false);
+
             modelBuilder.Entity<LINHKIEN>()
                 .Property(e => e.SERIAL)
                 .IsUnicode(false);
@@ -133,6 +147,7 @@ namespace QLPC.Models.DataModel
                 .Property(e => e.SERIAL)
                 .IsUnicode(false);
 
+
             modelBuilder.Entity<SANPHAM>()
                 .Property(e => e.SERIAL)
                 .IsUnicode(false);
@@ -162,6 +177,12 @@ namespace QLPC.Models.DataModel
             modelBuilder.Entity<SANPHAM>()
                 .HasMany(e => e.MUABANs)
                 .WithRequired(e => e.SANPHAM)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<SANPHAM>()
+                .HasMany(e => e.GIOHANGs)
+                .WithRequired(e => e.SANPHAM)
+                .HasForeignKey(e => e.MODEL)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<SANPHAM>()

@@ -16,4 +16,17 @@ namespace QLPC.Models.BussinessModel
 
         public decimal GIA { get; set; }
     }
+
+    public class KhachHangLoc
+    {
+        public int Ma { get; set; }
+        public double perSon { get; set; }
+        public double trungBinh { get; set; }
+    }
+
+    public class SanPhamLoc
+    {
+        public SanPhamStore sanpham { get; set; }
+        public double pred { get; set; }
+    }
 }

@@ -132,7 +132,7 @@
                         <h3 style="font-style:inherit">Tên sản phẩm:</h3>
                         <p style="font-size:20px">@ViewBag.sanpham.TENMAY  @ViewBag.sanpham.MODEL </p>
                         <div class="price">
-                            <h3>Giá bán:</h3><p><span>@ViewBag.sanpham.GIA đ</span></p>
+                            <h3>Giá bán:</h3><p><span>@ViewBag.sanpham.GIA.ToString("N0") đ</span></p>
                         </div>
                         <div style="font-style:italic"> Sản phẩm được bảo hành <b style="color:red">@ViewBag.sanpham.THOIHANBAOHANH</b> tháng</div>
                         <div class="share-desc">

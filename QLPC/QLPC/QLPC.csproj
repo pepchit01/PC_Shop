@@ -184,6 +184,7 @@
     <Compile Include="Models\DataModel\BAOHANH.cs" />
     <Compile Include="Models\DataModel\COLK.cs" />
     <Compile Include="Models\DataModel\COMMENT.cs" />
+    <Compile Include="Models\DataModel\GIOHANG.cs" />
     <Compile Include="Models\DataModel\HANGSX.cs" />
     <Compile Include="Models\DataModel\KHACHHANG.cs" />
     <Compile Include="Models\DataModel\LINHKIEN.cs" />

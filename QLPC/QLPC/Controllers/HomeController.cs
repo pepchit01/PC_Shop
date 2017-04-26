@@ -20,13 +20,20 @@ namespace QLPC.Controllers
 
         public ActionResult Index() {
             KHACHHANG kh = db.khachhang.First();
-            GoiY.Tim();
+
 
             var pcBanChays = db.Database.SqlQuery<SanPhamStore>("SP_SanPhamBanChay").ToList();
-                ViewBag.pcBanChay = pcBanChays;
-                var pcMoiNhats = db.Database.SqlQuery<SanPhamStore>("SP_SanPhamMoi").ToList();
-                ViewBag.pcMoiNhat = pcMoiNhats;
-                return View();
+            ViewBag.pcBanChay = pcBanChays;
+            var pcMoiNhats = db.Database.SqlQuery<SanPhamStore>("SP_SanPhamMoi").ToList();
+            ViewBag.pcMoiNhat = pcMoiNhats;
+            if (Session["MAKH"]!=null)
+            {
+                var pcGoiY= GoiY.Tim((int)Session["MAKH"]).ToList();
+                ViewBag.pcGoiY = pcGoiY;
+                ViewBag.Count = pcGoiY.Count();
+            }
+               
+            return View();
 
 
 
@@ -109,10 +116,11 @@ namespace QLPC.Controllers
             var khachhang = db.khachhang.SingleOrDefault(x => x.DTHOAIKH == uname2 && x.PASS == psw2);
             if(khachhang != null)
             {
+                Session["MAKH"] = khachhang.MAKH;
                 Session["SDT"] = khachhang.DTHOAIKH;
                 Session["TenKhachHang"] = khachhang.TENKH;
                 Session["DiaChi"] = khachhang.DCHIKH;
-                int SoHangTrongGio= db.muaban.Where(x => x.MAKH == khachhang.MAKH).Count();
+                int SoHangTrongGio= db.giohang.Where(x => x.MAKH == khachhang.MAKH).Count();
                 Session["SoHangGioHang"] = SoHangTrongGio;
                 RedirectToAction("Index");
             }
@@ -126,6 +134,7 @@ namespace QLPC.Controllers
             Session["SDT"] = null;
             Session["TenKhachHang"] =null;
             Session["DiaChi"] = null;
+            Session["MAKH"] = null;
             return RedirectToAction("Index");
         }
 
