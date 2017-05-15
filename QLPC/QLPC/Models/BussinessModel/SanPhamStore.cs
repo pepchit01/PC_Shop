@@ -29,4 +29,10 @@ namespace QLPC.Models.BussinessModel
         public SanPhamStore sanpham { get; set; }
         public double pred { get; set; }
     }
+
+    public class SuMuaBan
+    {
+        public int MAKH { get; set; }
+        public string MODEL { get; set; }
+    }
 }

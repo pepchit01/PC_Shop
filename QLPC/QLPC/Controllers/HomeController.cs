@@ -21,14 +21,14 @@ namespace QLPC.Controllers
         public ActionResult Index() {
             KHACHHANG kh = db.khachhang.First();
 
-            //GoiY.Tim();
+            GoiY.KiemTra();
             var pcBanChays = db.Database.SqlQuery<SanPhamStore>("SP_SanPhamBanChay").ToList();
             ViewBag.pcBanChay = pcBanChays;
             var pcMoiNhats = db.Database.SqlQuery<SanPhamStore>("SP_SanPhamMoi").ToList();
             ViewBag.pcMoiNhat = pcMoiNhats;
             if (Session["MAKH"] != null)
             {
-                var pcGoiY = GoiY.TimTheoMuaBan((int)Session["MAKH"]).ToList();
+                var pcGoiY = GoiY.TimTheoNguoiDung((int)Session["MAKH"]).ToList();
                 ViewBag.pcGoiY = pcGoiY;
                 ViewBag.Count = pcGoiY.Count();
             }
@@ -83,6 +83,8 @@ namespace QLPC.Controllers
                 ViewBag.sanpham = sanpham;
                 var cauhinh = db.linhkien.Where(x => x.SERIAL == sanpham.SERIAL).OrderBy(x=>x.TENLOAI);
                 ViewBag.cauhinh = cauhinh;
+                var goiYTheoSanPham = GoiY.TimTheoSanPham(id).ToList();
+                ViewBag.goiYTheoSanPham = goiYTheoSanPham;
                 return View();
             }
             catch
