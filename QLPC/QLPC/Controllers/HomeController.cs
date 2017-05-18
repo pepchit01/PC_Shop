@@ -21,17 +21,24 @@ namespace QLPC.Controllers
         public ActionResult Index() {
             KHACHHANG kh = db.khachhang.First();
 
-            GoiY.KiemTra();
+            //GoiY.KiemTra();
             var pcBanChays = db.Database.SqlQuery<SanPhamStore>("SP_SanPhamBanChay").ToList();
             ViewBag.pcBanChay = pcBanChays;
             var pcMoiNhats = db.Database.SqlQuery<SanPhamStore>("SP_SanPhamMoi").ToList();
             ViewBag.pcMoiNhat = pcMoiNhats;
+            if (Session["SanPhamXem"] != null)
+            {
+                var pcGoiYXem = GoiY.TimTheoXem(Session["SanPhamXem"] as string);
+                ViewBag.pcGoiYXem = pcGoiYXem;
+                ViewBag.Count2 = pcGoiYXem.Count();
+            }
             if (Session["MAKH"] != null)
             {
                 var pcGoiY = GoiY.TimTheoNguoiDung((int)Session["MAKH"]).ToList();
                 ViewBag.pcGoiY = pcGoiY;
                 ViewBag.Count = pcGoiY.Count();
             }
+
 
             return View();
 
@@ -83,8 +90,21 @@ namespace QLPC.Controllers
                 ViewBag.sanpham = sanpham;
                 var cauhinh = db.linhkien.Where(x => x.SERIAL == sanpham.SERIAL).OrderBy(x=>x.TENLOAI);
                 ViewBag.cauhinh = cauhinh;
-                var goiYTheoSanPham = GoiY.TimTheoSanPham(id).ToList();
-                ViewBag.goiYTheoSanPham = goiYTheoSanPham;
+                if(Session["MAKH"] == null)
+                {
+                    var goiYTheoSanPham = GoiY.TimTheoSanPham(id).ToList();
+                    ViewBag.goiYTheoSanPham = goiYTheoSanPham;
+                }
+                else
+                {
+                    var goiYTheoSanPham = GoiY.GhepGoiY((int)Session["MAKH"], id).ToList();
+                    ViewBag.goiYTheoSanPham = goiYTheoSanPham;
+                }
+                if (Session["MAKH"]==null)
+                {
+                    string chuoiSanPham = Session["SanPhamXem"] as string + id + ";";
+                    Session["SanPhamXem"] = chuoiSanPham;
+                }
                 return View();
             }
             catch
@@ -124,6 +144,7 @@ namespace QLPC.Controllers
                 Session["DiaChi"] = khachhang.DCHIKH;
                 int SoHangTrongGio= db.giohang.Where(x => x.MAKH == khachhang.MAKH).Count();
                 Session["SoHangGioHang"] = SoHangTrongGio;
+                Session["SanPhamXem"] = null;
                 RedirectToAction("Index");
             }
             ViewBag.Error = "Tài khoản mật khẩu không đúng!";

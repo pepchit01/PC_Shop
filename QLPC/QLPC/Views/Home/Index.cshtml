@@ -174,6 +174,49 @@
             </div>
         }
   
+        @if (ViewBag.Count2 != 0 && ViewBag.Count2 != null)
+        {
+            <div class="content_top">
+                <div class="heading">
+                    <h3>Sản phẩm gợi ý</h3>
+                </div>
+                <div class="see">
+                    <p></p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="section group">
+                <div style="width:2px"></div>
+                @foreach (var item in ViewBag.pcGoiYXem)
+                {
+                    <div class="grid_1_of_4 images_1_of_4" style="height:270px; width:250px">
+                        <div class="container5">
+                            <img class="image5" style="height:145px" src="@item.sanpham.IMAGE" alt="" />
+                            <div class="overlay5">
+                                <div class="text5">
+                                    <a href="/Home/ReviewProduct/@item.sanpham.MODEL"><input type="button" class="btn5 btn-info" value="Chi tiết" style="margin-left:4px"></a> <br>
+                                    <a href="#"><input type="button" class="btn5 btn-danger" style="margin-top:2px" value="Mua ngay"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/Home/ReviewProduct/@item.sanpham.MODEL"><h2 style="height:40px ;margin-top:5px">@item.sanpham.TENMAY @item.sanpham.MODEL</h2></a>
+                        <div class="price-details">
+                            <div class="price-number" style="margin-left:-5px; margin-top:5px">
+                                <p><span class="rupees">@item.sanpham.GIA.ToString("N0")<b>đ</b></span></p>
+                            </div>
+                            <div class="add-cart right">
+                                <h4 class="gio">
+                                    @if (Session["SDT"] != null)
+                                    {<a href="#">Cho vào giỏ</a> }
+                                    else
+                                    { <a href="#" onclick="document.getElementById('id05').style.display='block'">Cho vào giỏ</a>}
+                                </h4>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>   }
+            </div>
+        }
 
         <div class="content_top">
             <div class="heading">

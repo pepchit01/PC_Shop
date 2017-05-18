@@ -3,8 +3,7 @@
     ViewBag.Title = "ReviewProduct";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
+<script src="~/Content/js/jssor.slider-23.1.5.min.js"></script>
 
 <div class="main">
     <div class="content">
@@ -202,48 +201,6 @@
                 </div>
 
             </div>
-            @*<div class="content_top">
-                <div class="heading">
-                    <h3>Sản phẩm gợi ý</h3>
-                </div>
-                <div class="see">
-                    <p></p>
-                </div>
-                <div class="clear"></div>
-            </div>
-            <div class="section group">
-                <div style="width:2px"></div>
-                @foreach (var item in ViewBag.goiYTheoSanPham)
-                {
-                    <div class="grid_1_of_4 images_1_of_4" style="height:270px; width:250px">
-                        <div class="container5">
-                            <img class="image5" style="height:145px" src="@item.sanpham.IMAGE" alt="" />
-                            <div class="overlay5">
-                                <div class="text5">
-                                    <a href="/Home/ReviewProduct/@item.sanpham.MODEL"><input type="button" class="btn5 btn-info" value="Chi tiết" style="margin-left:4px"></a> <br>
-                                    <a href="#"><input type="button" class="btn5 btn-danger" style="margin-top:2px" value="Mua ngay"></a>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="/Home/ReviewProduct/@item.sanpham.MODEL"><h2 style="height:40px ;margin-top:5px">@item.sanpham.TENMAY @item.sanpham.MODEL</h2></a>
-                        <div class="price-details">
-                            <div class="price-number" style="margin-left:-5px; margin-top:5px">
-                                <p><span class="rupees">@item.sanpham.GIA.ToString("N0")<b>đ</b></span></p>
-                            </div>
-                            <div class="add-cart right">
-                                <h4 class="gio">
-                                    @if (Session["SDT"] != null)
-                                    {<a href="#">Cho vào giỏ</a> }
-                                    else
-                                    { <a href="#" onclick="document.getElementById('id05').style.display='block'">Cho vào giỏ</a>}
-                                </h4>
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                    </div>   }
-            </div>*@
-
-
 
             <div class="rightsidebar span_3_of_1" style="margin-left:30px">
                 <ul>
@@ -274,8 +231,42 @@
                 </div>
             </div>
         </div>
+
+        <div class="section group">
+            <div style="width:2px"></div>
+            @foreach (var item in ViewBag.goiYTheoSanPham)
+            {
+                <div class="grid_1_of_4 images_1_of_4" style="height:270px; width:250px">
+                    <div class="container5">
+                        <img class="image5" style="height:145px" src="@item.sanpham.IMAGE" alt="" />
+                        <div class="overlay5">
+                            <div class="text5">
+                                <a href="/Home/ReviewProduct/@item.sanpham.MODEL"><input type="button" class="btn5 btn-info" value="Chi tiết" style="margin-left:4px"></a> <br>
+                                <a href="#"><input type="button" class="btn5 btn-danger" style="margin-top:2px" value="Mua ngay"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/Home/ReviewProduct/@item.sanpham.MODEL"><h2 style="height:40px ;margin-top:5px">@item.sanpham.TENMAY @item.sanpham.MODEL</h2></a>
+                    <div class="price-details">
+                        <div class="price-number" style="margin-left:-5px; margin-top:5px">
+                            <p><span class="rupees">@item.sanpham.GIA.ToString("N0")<b>đ</b></span></p>
+                        </div>
+                        <div class="add-cart right">
+                            <h4 class="gio">
+                                @if (Session["SDT"] != null)
+                                {<a href="#">Cho vào giỏ</a> }
+                                else
+                                { <a href="#" onclick="document.getElementById('id05').style.display='block'">Cho vào giỏ</a>}
+                            </h4>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>   }
+        </div>
+
     </div>
 </div>
+
 <!--Modal anh san pham-->
 <style>
     #myImg3 {
@@ -346,4 +337,45 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+/*Overlay image*/
+.overlay5 {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background-color: #51504b;
+  overflow: hidden;
+  width: 100%;
+  height:0;
+  transition: .5s ease;
+  opacity:0.9;
+}
+
+.container5:hover .overlay5 {
+  bottom: 0;
+  height: 100%;
+}
+
+.text5 {
+  white-space: nowrap; 
+  color: #B81D22;
+  font-size:20px;
+  position:absolute;
+  overflow:hidden;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%, -50%);
+  -ms-transform:translate(-50%, -50%);
+}
+.container5 {
+  position: relative;
+}
+.btn5{
+    width:110px;
+    font-family:ambleregular; 
+    border:0;  
+}
+
 </style>
+

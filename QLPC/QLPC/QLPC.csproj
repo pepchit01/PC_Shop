@@ -181,6 +181,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BussinessModel\SanPhamStore.cs" />
+    <Compile Include="Models\BussinessModel\SplitString.cs" />
     <Compile Include="Models\DataModel\BAOHANH.cs" />
     <Compile Include="Models\DataModel\COLK.cs" />
     <Compile Include="Models\DataModel\COMMENT.cs" />
@@ -218,6 +219,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\Index.css" />
     <Content Include="Content\js\Index.js" />
+    <Content Include="Content\js\jssor.slider-23.1.5.min.js" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
