@@ -163,9 +163,9 @@
                             <div class="add-cart right">
                                 <h4 class="gio">
                                     @if (Session["SDT"] != null)
-                                    {<a href="#">Cho vào giỏ</a> }
+                                    {<a href="/Home/GioHang/@item.sanpham.MODEL">Cho vào giỏ</a> }
                                     else
-                                    { <a href="#" onclick="document.getElementById('id05').style.display='block'">Cho vào giỏ</a>}
+                                    { <a href="" onclick="document.getElementById('id05').style.display='block'">Cho vào giỏ</a>}
                                 </h4>
                             </div>
                             <div class="clear"></div>
@@ -207,7 +207,7 @@
                             <div class="add-cart right">
                                 <h4 class="gio">
                                     @if (Session["SDT"] != null)
-                                    {<a href="#">Cho vào giỏ</a> }
+                                    {<a href="/Home/GioHang/@item.sanpham.MODEL">Cho vào giỏ</a> }
                                     else
                                     { <a href="#" onclick="document.getElementById('id05').style.display='block'">Cho vào giỏ</a>}
                                 </h4>
@@ -248,7 +248,7 @@
                         <div class="add-cart right">
                             <h4 class="gio">
                                 @if (Session["SDT"] != null)
-                                {<a href="#">Cho vào giỏ</a> }
+                                {<a href="/Home/GioHang/@item.MODEL">Cho vào giỏ</a> }
                                 else
                                 { <a href="#" onclick="document.getElementById('id05').style.display='block'">Cho vào giỏ</a>}
                             </h4>
@@ -292,7 +292,7 @@
                         <div class="add-cart right">
                             <h4 class="gio">
                                 @if (Session["SDT"] != null)
-                                {<a href="#">Cho vào giỏ</a> }
+                                {<a href="/Home/GioHang/@item.MODEL">Cho vào giỏ</a> }
                                 else
                                 { <a href="#" onclick="document.getElementById('id05').style.display='block'">Cho vào giỏ</a>}
                             </h4>

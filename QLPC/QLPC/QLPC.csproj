@@ -288,6 +288,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\SanPhamTheoHang.cshtml" />
     <Content Include="Views\Home\ReviewProduct.cshtml" />
+    <Content Include="Views\Home\XemGioHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Content\bootstrap\" />

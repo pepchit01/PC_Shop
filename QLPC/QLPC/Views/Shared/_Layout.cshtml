@@ -66,11 +66,18 @@
                 </div>
                 <div class="cart">
                     <p>
-                        Chào mừng bạn đã đến cửa hàng online của chúng tôi! <span>Giỏ:</span><div id="dd" class="wrapper-dropdown-2">
+                        Chào mừng bạn đã đến cửa hàng online của chúng tôi!
+                        @if(Session["SDT"] == null)
+                        {<a href="/Home/XemGioHang"><span>Giỏ:</span></a>}
+                        else
+                        {<a href="/Home/XemGioHang"><span>Giỏ:</span></a>}
+                        <div id="dd" class="wrapper-dropdown-2">
                             <b>@Session["SoHangGioHang"]</b> item(s) 
-                            <ul class="dropdown">
-                                <li>Chưa có hàng</li>
-                            </ul>
+                            <a  href="/Home/XemGioHang" >
+                                <ul class="dropdown">
+                                <li>Xem giỏ hàng</li>
+                                </ul>
+                            </a>
                         </div>
                     </p>
                 </div>
@@ -221,7 +228,7 @@
 
 
     <hr />
-    <div class="footer"">
+    <div class="footer">
         <div class="wrap">
             <div class="section group">
                 <div class="col_1_of_4 span_1_of_4">
@@ -237,7 +244,7 @@
                     <ul>
                         <li><a href="#" onclick="document.getElementById('id05').style.display='block'">Đăng nhập</a></li>
                         <li><a href="#" onclick="document.getElementById('id06').style.display='block'">Đăng kí</a></li>
-                        <li><a href="#">Xem giỏ hàng</a></li>
+                        <li><a href="/Home/XemGioHang">Xem giỏ hàng</a></li>
                     </ul>
                 </div>
                 <div class="col_1_of_4 span_1_of_4">

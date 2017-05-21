@@ -165,7 +165,11 @@ namespace QLPC.Models.BussinessModel
             return sanPhamLoc.Take(8).ToList(); //Trả về 8 sản phẩm tiềm năng nhất
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="session"></param>
+        /// <returns></returns>
         public static List<SanPhamLoc> TimTheoXem(string session)
         {
             //int ma = 50;
@@ -576,6 +580,9 @@ namespace QLPC.Models.BussinessModel
             return sanPhamLoc.Take(8).ToList(); //Trả về 8 sản phẩm tiềm năng nhất
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static void KiemTra()
         {
             int a = 0;
@@ -606,6 +613,12 @@ namespace QLPC.Models.BussinessModel
           double given = (double)demGiven / 3260;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ma"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public static List<SanPhamLoc> GhepGoiY(int ma, string model)
         {
             List<SanPhamLoc> goiYTheoSanPham = GoiY.TimTheoSanPham(model).ToList();

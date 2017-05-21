@@ -140,7 +140,16 @@
                                     <a href="#" class="fa fa-facebook"></a>
                                     <a href="#" class="fa fa-twitter"></a>                               
                             </div>
-                            <div class="button"><span><a href="#">Cho vào giỏ</a></span></div>
+                            @if (Session["SDT"] != null)
+                            {
+                                <div class="button"><span><a href="/Home/GioHang/@ViewBag.sanpham.MODEL" >Cho vào giỏ</a></span></div>
+
+                            }
+                            else
+                            {
+                                <div class="button"><span><a href="#" onclick="document.getElementById('id05').style.display='block'">Cho vào giỏ</a></span></div>
+
+                            }
                             <div class="clear"></div>
                             <hr>
                         </div>
@@ -232,6 +241,7 @@
             </div>
         </div>
 
+        <h3>Sản phẩm gợi ý:</h3>
         <div class="section group">
             <div style="width:2px"></div>
             @foreach (var item in ViewBag.goiYTheoSanPham)

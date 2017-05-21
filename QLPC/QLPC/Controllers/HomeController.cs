@@ -14,6 +14,7 @@ using System.Data.Entity.Validation;
 
 namespace QLPC.Controllers
 {
+
     public class HomeController : Controller
     {
         private QLPCDbContext db = new QLPCDbContext();
@@ -155,9 +156,11 @@ namespace QLPC.Controllers
         public ActionResult DangXuat()
         {
             Session["SDT"] = null;
+            Session["SoHangGioHang"] = null;
             Session["TenKhachHang"] =null;
             Session["DiaChi"] = null;
             Session["MAKH"] = null;
+            Session["SanPhamXem"] = null;
             return RedirectToAction("Index");
         }
 
@@ -184,5 +187,90 @@ namespace QLPC.Controllers
             }
 
         }
+
+
+      public ActionResult XemGioHang()
+        {
+            try
+            {
+                 if (Session["MAKH"] != null)
+            {
+                int tongTien = 0;
+                var sanPhamTrongGios = db.Database.SqlQuery<SanPhamStore>("SP_LayGioHang @ma", new SqlParameter("@ma", Session["MAKH"])).ToList();
+                foreach (var item in sanPhamTrongGios)
+                {
+                    tongTien = tongTien + (int)item.GIA;
+                }
+                ViewBag.TongTien = tongTien;
+                ViewBag.sanPhamTrongGio = sanPhamTrongGios;
+                ViewBag.Dem = sanPhamTrongGios.Count();
+                return View();
+            }
+            else
+            {
+                ViewBag.Dem = 0;
+                return View();
+            }
+            }
+            catch
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        public ActionResult GioHang(string id)
+        {
+            try
+            {
+                var sanpham = db.sanpham.Where(x => x.MODEL == id).Take(1).ToList();
+                var a=db.Database.SqlQuery<int>("ThemGio @ma, @model", new SqlParameter("@ma", (int)Session["MAKH"]),new SqlParameter("@model", sanpham[0].SERIAL)).ToList();
+                int ma = (int)Session["MAKH"];
+                Session["SoHangGioHang"] = (int)Session["SoHangGioHang"] + 1;
+                return RedirectToAction("XemGioHang");
+             }
+            catch
+            {
+                return RedirectToAction("Index");
+             }
+         }
+
+        public JsonResult DeleteCart(string model)
+        {
+            try
+            {
+                List<GIOHANG> a = db.giohang.Where(x => x.MAKH == (int)Session["MAKH"]).ToList();
+                db.giohang.Remove(a[0]);
+                db.SaveChanges();
+                return Json(new
+                {
+                    status = true
+                });
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+       public ActionResult ThanhToan()
+        {
+            List<string> gio = db.Database.SqlQuery<string>("SP_LayGio @ma", new SqlParameter("@ma", (int)Session["MAKH"])).ToList();
+            foreach(var item in gio)
+            {
+                var exec = db.Database.SqlQuery<int>("SP_ThanhToan @ma,@serial ",new SqlParameter("@ma", (int)Session["MAKH"]), new SqlParameter("@serial", item)).ToList();
+                var exec1= db.Database.SqlQuery<int>("SP_DeleteGio @ma, @serial", new SqlParameter("@ma", (int)Session["MAKH"]),new SqlParameter("@serial", item)).ToList();
+            }
+            TempData["ThongBaoMua"] = "Đã thanh toán thành công! Hàng sẽ được chuyển trong vòng 24h!";
+            Session["SoHangGioHang"] = 0;
+            return RedirectToAction("XemGioHang");
+        }
+
+        public ActionResult XoaGio(string id)
+        {
+            List<SANPHAM> item = db.sanpham.Where(x => x.MODEL == id).ToList();
+            var exec1 = db.Database.SqlQuery<int>("SP_DeleteGio @ma, @serial", new SqlParameter("@ma", (int)Session["MAKH"]), new SqlParameter("@serial", item[0].SERIAL)).ToList();
+            return RedirectToAction("XemGioHang");
+        }
+
     }
 }
